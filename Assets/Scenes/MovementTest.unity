@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_smoothTime: 0.05
   m_speed: 1
   m_jumpHeight: 2
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 1445941532}
   - component: {fileID: 1445941535}
   - component: {fileID: 1445941534}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_smoothTime: 0.05
   m_speed: 1
   m_jumpHeight: 2
