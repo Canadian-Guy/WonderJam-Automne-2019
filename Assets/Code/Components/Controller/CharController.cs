@@ -26,6 +26,9 @@ public class CharController : MonoBehaviour
     [Tooltip("The cooldown until the character can jump again")]
     [Range(0, 2f)] public float m_jumpCooldown = 0.5f;
 
+    [Tooltip("The audio clip played when jumping")]
+    public SimpleAudioEvent m_jumpSound;
+
     [HideInInspector] public Player m_player;
     [HideInInspector] public bool m_directionX; // Whether or not the character is facing right
 
@@ -34,6 +37,7 @@ public class CharController : MonoBehaviour
 
     private float m_lastJumpTime = 0f;
     private bool m_isGrounded = true;
+    private AudioSource m_source = null;
 
     void Awake() {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
@@ -42,9 +46,25 @@ public class CharController : MonoBehaviour
     }
 
     void Update() {
-        m_isGrounded = Physics2D.OverlapCircle(transform.position, 0.15f, m_groundLayer);
+        if(m_source == null) m_source = GetComponent<AudioSource>();
+
+        m_isGrounded = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 0.25f), 
+                                            new Vector2(0.5f, 0.5f), 0, m_groundLayer);
 
         if(!m_isGrounded) ApplyGravity();
+
+        if(!m_player.m_hasEnteredGame && !m_player.m_puppet) {
+            m_rigidbody2D.velocity = new Vector2(0, m_rigidbody2D.velocity.y);
+            m_player.m_animator.SetBool("isWalking", false);
+            return;
+        }
+
+        if(m_player.m_puppet &&
+            Game.m_players.GetPlayerFromId(m_player.m_playerId == 0 ? 1 : 0).m_lastUsed !=
+            m_player.m_rewiredPlayer.controllers.GetLastActiveController()) {
+            m_player.m_animator.SetBool("isWalking", false);
+            return;
+        }
 
         float xMove = m_player.m_rewiredPlayer.GetAxisRaw("MoveX");
         float yMove = 0f;
@@ -53,6 +73,8 @@ public class CharController : MonoBehaviour
 
         if(jump) {
             if(Time.time - m_lastJumpTime >= m_jumpCooldown && !withinHoldLimit && m_isGrounded) {
+                if(m_jumpSound != null) m_jumpSound.Play(m_source);
+
                 m_lastJumpTime = Time.time;
                 yMove = m_jumpHeight * 2f;
             } else if(withinHoldLimit)
@@ -64,6 +86,9 @@ public class CharController : MonoBehaviour
 
         xMove *= Time.deltaTime;
         yMove *= Time.deltaTime;
+
+        if(Mathf.Abs(xMove) > 0.05) m_player.m_animator.SetBool("isWalking", true);
+        else m_player.m_animator.SetBool("isWalking", false);
 
         Vector3 targetVelocity = new Vector2(xMove * (m_speed / Time.unscaledDeltaTime) + m_rigidbody2D.velocity.x / 2, 
                                              yMove * (m_jumpSpeed / Time.unscaledDeltaTime));
@@ -88,6 +113,7 @@ public class CharController : MonoBehaviour
         Vector3 localScale = transform.localScale;
 
         localScale.x *= -1;
+        m_player.m_switchTooltip.flipX = !m_player.m_switchTooltip.flipX;
         transform.localScale = localScale;
         m_directionX = !m_directionX;
     }

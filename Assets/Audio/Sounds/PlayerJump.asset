@@ -9,6 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c867744305ab642a576abaeb350ab3, type: 3}
-  m_Name: OnEnterShadow
+  m_Script: {fileID: 11500000, guid: 6523063ec8edde54583e1563dca1cc7c, type: 3}
+  m_Name: PlayerJump
   m_EditorClassIdentifier: 
+  m_clips:
+  - {fileID: 8300000, guid: 749b2ceff287f7544aa848e2768decbb, type: 3}
+  m_volume:
+    Min: 0.6577438
+    Max: 1
+  m_pitch:
+    Min: 0.6577438
+    Max: 1

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class LevelEnd : MonoBehaviour
     [HideInInspector]
     public bool m_levelFinished = false;
     [HideInInspector]
-    public List<Collision2D> collisions = new List<Collision2D>();
+    public List<Collider2D> collisions = new List<Collider2D>();
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +27,21 @@ public class LevelEnd : MonoBehaviour
     {
         if (m_levelFinished)
         {
-            foreach(Collision2D collision2D in collisions)
+            /*foreach(Collider2D collision2D in collisions)
             {
                 collision2D.transform.position = new Vector3(0, 0, 0);
-            }
+            }*/
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         //m_endPointCollider.OverlapCollider(m_contactFilter, collisions);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Player")
+        Debug.Log("roflmaomg");
+        if (collision.tag == "Player")
         {
+            
             m_playerWhoFinished++;
             collisions.Add(collision);
             if (m_playerWhoFinished ==  m_numberOfPlayer)
@@ -47,9 +51,9 @@ public class LevelEnd : MonoBehaviour
         }     
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.tag == "Player")
         {
             m_playerWhoFinished--;
             collisions.Remove(collision);
