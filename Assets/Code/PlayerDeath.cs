@@ -47,7 +47,9 @@ public class PlayerDeath : MonoBehaviour
         else if(!m_isPraisingTheSun && m_expositionRate > 0)
         {
             m_expositionRate -= 0.3 * Time.deltaTime;
-            m_expositionRateLevel.value = (float)m_expositionRate;
+
+            if(m_expositionRateLevel != null)
+                m_expositionRateLevel.value = (float)m_expositionRate;
             if (m_expositionRate < 0)
                 m_expositionRate = 0;
         }
