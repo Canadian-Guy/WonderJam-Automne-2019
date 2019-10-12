@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d986d602c75f9454f8b428feb8a7f3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isPraisingTheSun: 1
+  m_isPraisingTheSun: 0
   m_expositionRate: 0
   m_spawnPoint: {fileID: 0}
   m_expositionRateLevel: {fileID: 0}
