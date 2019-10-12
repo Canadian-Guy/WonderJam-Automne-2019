@@ -84,12 +84,14 @@ public class CharController : MonoBehaviour
 
         if (!m_player.m_hasEnteredGame && !m_player.m_puppet) {
             m_rigidbody2D.velocity = new Vector2(0, m_rigidbody2D.velocity.y);
+            m_animator.SetFloat("speed", 0f);
             return;
         }
 
         if(m_player.m_puppet &&
             Game.m_players.GetPlayerFromId(m_player.m_playerId == 0 ? 1 : 0).m_lastUsed !=
             m_player.m_rewiredPlayer.controllers.GetLastActiveController()) {
+            m_animator.SetFloat("speed", 0f);
             return;
         }
 
