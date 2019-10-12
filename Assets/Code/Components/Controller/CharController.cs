@@ -70,7 +70,7 @@ public class CharController : MonoBehaviour
             Debug.DrawLine(new Vector2(xHigh, yLow), new Vector2(xHigh, yHigh), hit ? Color.green : Color.red);
         }
 
-        m_isGrounded = hitSections >= 2;
+        m_isGrounded = hitSections >= 3;
 
         if(!m_isGrounded) ApplyGravity();
 
