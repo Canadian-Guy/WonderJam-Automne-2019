@@ -11,13 +11,19 @@ TagManager:
   - 
   - Water
   - UI
+  - Shadow
+  - Player
+  - Ground
   - 
   - 
+<<<<<<< HEAD
 <<<<<<< HEAD
   - Player
 =======
   - Shadow
 >>>>>>> feature/DetectionEclairage
+=======
+>>>>>>> 2036ec4e14957ca9d53a0fbbf45525b42c9343b6
   - 
   - 
   - 
