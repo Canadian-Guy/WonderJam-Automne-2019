@@ -1,30 +1,50 @@
 ﻿using UnityEngine;
 using Rewired;
-using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
-    public static List<Player> m_players = new List<Player>();
-
     [Tooltip("The id assigned to this player, corresponds to the Rewired player id (starts at 0)")]
     public int m_playerId = 0;
 
     [HideInInspector] public CharController m_playerController;
     [HideInInspector] public Rewired.Player m_rewiredPlayer;
 
+    private bool m_switched = false;
+
     public void Start() {
-        m_players.Add(this);
+        Game.m_players.m_playerList.Add(this);
 
         m_rewiredPlayer = ReInput.players.GetPlayer(m_playerId);
         m_playerController = GetComponent<CharController>();
         m_playerController.m_player = this;
     }
 
-    public static Player GetPlayerFromId(int p_playerId) {
-        foreach(Player player in m_players)
-            if(player.m_playerId == p_playerId)
-                return player;
+    void Update() {
+        if(Game.m_players.m_playingPlayers == 1 && m_rewiredPlayer.GetButtonDown("Switch")) {
+            Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
+            Controller lastActive = GetLastActiveController();
 
-        return null;
+            otherPlayer.m_rewiredPlayer.controllers.AddController(lastActive, true);
+            m_switched = !m_switched;
+        } else if(Game.m_players.m_playingPlayers == 2 && m_switched) {
+            Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
+            Controller current = GetLastActiveController();
+            Controller otherCurrent = otherPlayer.GetLastActiveController();
+
+            otherPlayer.m_rewiredPlayer.controllers.AddController(current, true);
+            m_rewiredPlayer.controllers.AddController(otherCurrent, true);
+            m_switched = false;
+        }
+    }
+
+    private Controller GetLastActiveController() {
+        Controller controller = null;
+
+        if(m_rewiredPlayer.controllers.joystickCount > 1)
+            controller = m_rewiredPlayer.controllers.GetLastActiveController();
+        else if(m_rewiredPlayer.controllers.joystickCount == 1)
+            controller = m_rewiredPlayer.controllers.Joysticks[0];
+
+        return controller;
     }
 }
