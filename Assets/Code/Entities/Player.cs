@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public AudioSource m_audioSource;
     [HideInInspector] public SpriteRenderer m_spriteRenderer;
     [HideInInspector] public SpriteRenderer m_switchTooltip;
+    [HideInInspector] public Animator m_animator;
 
     public void Start() {
         Game.m_players.m_playerList.Add(this);
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_switchTooltip = transform.Find("SwitchTooltip").GetComponent<SpriteRenderer>();
         m_switchTooltip.enabled = false;
+
+        m_animator = GetComponent<Animator>();
+        m_animator.SetBool("isWalking", false);
 
         m_audioSource = gameObject.AddComponent<AudioSource>();
         Game.m_audio.AddAudioSource(m_audioSource, AudioCategories.SFX);

@@ -711,7 +711,8 @@ GameObject:
   - component: {fileID: 874646735}
   - component: {fileID: 874646734}
   - component: {fileID: 874646738}
-  m_Layer: 8
+  - component: {fileID: 874646739}
+  m_Layer: 9
   m_Name: Player (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -845,6 +846,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &874646739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874646733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab16fb4747814be4bbf76a85c970820e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerSpriteRenderer: {fileID: 0}
+  m_playerDeath: {fileID: 0}
+  m_flashSpeed: 0.1
 --- !u!1 &990589695
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +970,8 @@ GameObject:
   - component: {fileID: 1391228903}
   - component: {fileID: 1391228902}
   - component: {fileID: 1391228906}
-  m_Layer: 8
+  - component: {fileID: 1391228907}
+  m_Layer: 9
   m_Name: Player (2)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1088,6 +1105,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1391228907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391228901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab16fb4747814be4bbf76a85c970820e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerSpriteRenderer: {fileID: 0}
+  m_playerDeath: {fileID: 0}
+  m_flashSpeed: 0.1
 --- !u!1 &1419714587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,20 +1451,6 @@ MonoBehaviour:
   m_playerWhoFinished: 0
   m_numberOfPlayer: 2
   m_levelFinished: 0
-  contactFilter2D:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!50 &1801457200
 Rigidbody2D:
   serializedVersion: 4

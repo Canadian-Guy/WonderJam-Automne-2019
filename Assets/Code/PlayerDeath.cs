@@ -20,6 +20,7 @@ public class PlayerDeath : MonoBehaviour
     private AudioSource m_source = null;
     
 
+
     // Start is called before the first frame update
     void Start()
     {  
@@ -47,7 +48,9 @@ public class PlayerDeath : MonoBehaviour
         else if(!m_isPraisingTheSun && m_expositionRate > 0)
         {
             m_expositionRate -= 0.3 * Time.deltaTime;
-            m_expositionRateLevel.value = (float)m_expositionRate;
+
+            if(m_expositionRateLevel != null)
+                m_expositionRateLevel.value = (float)m_expositionRate;
             if (m_expositionRate < 0)
                 m_expositionRate = 0;
         }
@@ -59,6 +62,13 @@ public class PlayerDeath : MonoBehaviour
 
         transform.position = m_spawnPosition.position;
         m_expositionRate = 0d;
+        gameObject.GetComponent<Flasher>().m_flashSpeed = gameObject.GetComponent<Flasher>().m_baseFlashSpeed;
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "KillZone")
+            Death();
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3225112347455096974}
   - component: {fileID: 3225112347455096973}
   - component: {fileID: 1326774410132410814}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShadowPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016042978, y: 0}
+  m_Offset: {x: 0.0018581748, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.052882433, y: 0.23}
+  m_Size: {x: 0.4371612, y: 0.23}
   m_EdgeRadius: 0
 --- !u!114 &1326774410132410814
 MonoBehaviour:
@@ -121,5 +121,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BoxCollider2D: {fileID: 3225112347455096973}
-  m_EnterEvent: {fileID: 11400000, guid: b19aec40189859244865b5783b81cf13, type: 2}
-  m_ExitEvent: {fileID: 11400000, guid: bdd343922046c3b4dbd4b6486e29cf70, type: 2}
