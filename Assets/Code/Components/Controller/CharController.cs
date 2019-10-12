@@ -26,6 +26,9 @@ public class CharController : MonoBehaviour
     [Tooltip("The cooldown until the character can jump again")]
     [Range(0, 2f)] public float m_jumpCooldown = 0.5f;
 
+    [Tooltip("The audio clip played when jumping")]
+    public AudioSource m_jumpSound;
+
     [HideInInspector] public Player m_player;
     [HideInInspector] public bool m_directionX; // Whether or not the character is facing right
 
@@ -54,6 +57,8 @@ public class CharController : MonoBehaviour
 
         if(jump) {
             if(Time.time - m_lastJumpTime >= m_jumpCooldown && !withinHoldLimit && m_isGrounded) {
+                if (m_jumpSound != null)
+                    m_jumpSound.Play();
                 m_lastJumpTime = Time.time;
                 yMove = m_jumpHeight * 2f;
             } else if(withinHoldLimit)

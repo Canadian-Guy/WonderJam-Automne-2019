@@ -13,6 +13,7 @@ public class PlayerDeath : MonoBehaviour
     public Slider m_expositionRateLevel;
     [HideInInspector]
     public Transform m_spawnPosition;
+    public AudioSource m_deathSound;
     //[HideInInspector]
     //public PlayerControllerWannabe m_playerController;
     
@@ -32,7 +33,10 @@ public class PlayerDeath : MonoBehaviour
         if (m_isPraisingTheSun)
         {
             m_expositionRate += 0.3 * Time.deltaTime;
-            m_expositionRateLevel.value = (float)m_expositionRate;
+
+            if(m_expositionRateLevel != null)
+                m_expositionRateLevel.value = (float)m_expositionRate;
+
             if (m_expositionRate >= 1)
                 Death();
         }
@@ -47,6 +51,8 @@ public class PlayerDeath : MonoBehaviour
 
     void Death()
     {
+        if(m_deathSound != null)
+            m_deathSound.Play();
         transform.position = m_spawnPosition.position;
         m_expositionRate = 0d;
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
