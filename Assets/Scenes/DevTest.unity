@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208977780}
   - component: {fileID: 1208977779}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1346182431}
   - component: {fileID: 1346182433}
   - component: {fileID: 1346182432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TriggerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 1613500171}
   - component: {fileID: 1613500170}
   - component: {fileID: 1613500169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Box (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,12 +777,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3056987100100855076, guid: 57e2403187c33b046a7c57d2616dcf1a,
+    - target: {fileID: 3056987100802770625, guid: 57e2403187c33b046a7c57d2616dcf1a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3056987100802770625, guid: 57e2403187c33b046a7c57d2616dcf1a,
+    - target: {fileID: 3056987100100855076, guid: 57e2403187c33b046a7c57d2616dcf1a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
