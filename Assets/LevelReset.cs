@@ -8,6 +8,7 @@ public class LevelReset : MonoBehaviour
     [Tooltip("Player that has the ability to reset de level")]
     public Player m_ResetPoweredPlayer;
 
+    [Tooltip("Event to raise when we need a reset")]
     public GameEvent m_ResetEvent;
 
     // Update is called once per frame
