@@ -7,7 +7,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
 
-    float time = 0;
+    float time = 0.00f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +22,9 @@ public class Timer : MonoBehaviour
 
     IEnumerator SetTimer()
     {
-        gameObject.GetComponent<TMP_Text>().text = time.ToString();
-        time++;
-        yield return new WaitForSeconds(1);
+        gameObject.GetComponent<TMP_Text>().text = time.ToString("F3") + " s";
+        time+=0.01f;
+        yield return new WaitForSeconds(0.01f);
         StartCoroutine(SetTimer());
     }
 }
