@@ -16,6 +16,6 @@ public class Clouds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(new Vector3( (m_TravelRight == true ? 1 : -1) * m_TravelSpeed, 0, 0));
+        gameObject.transform.Translate(Vector3.right * (m_TravelRight == true ? 1 : -1) * m_TravelSpeed * Time.deltaTime);
     }
 }
