@@ -63,4 +63,10 @@ public class PlayerDeath : MonoBehaviour
         m_expositionRate = 0d;
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "KillZone")
+            Death();
+    }
 }
