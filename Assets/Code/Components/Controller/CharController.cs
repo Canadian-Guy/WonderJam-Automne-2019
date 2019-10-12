@@ -42,7 +42,8 @@ public class CharController : MonoBehaviour
     }
 
     void Update() {
-        m_isGrounded = Physics2D.OverlapCircle(transform.position, 0.15f, m_groundLayer);
+        m_isGrounded = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 0.075f), 
+                                            new Vector2(0.15f, 0.15f), 0, m_groundLayer);
 
         if(!m_isGrounded) ApplyGravity();
 
