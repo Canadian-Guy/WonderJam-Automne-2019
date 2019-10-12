@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
         if(m_previousPlayerInteractions.Count > 0 && m_playerList.Count > 0) {
             for(int i = 0; i < m_playerList.Count; i++)
-                m_playerList[i].m_hasEnteredGame = m_previousPlayerInteractions[i];
+                m_playerList.Find(p => p.m_playerId == i).m_hasEnteredGame = m_previousPlayerInteractions[i];
 
             m_previousPlayerInteractions.Clear();
         }

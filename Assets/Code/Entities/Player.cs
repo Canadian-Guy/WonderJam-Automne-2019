@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     void Update() {
         Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
+        //Debug.Log("Player " + m_playerId + ": entered? " + m_hasEnteredGame + " switched? " + m_switched + " puppet? " + m_puppet);
 
         if(!m_hasEnteredGame && m_rewiredPlayer.GetButtonDown("Interact") &&
             (IsPlaying() || (m_puppet && otherPlayer.m_lastUsed != GetLastActiveController()))) {
