@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3225112347455096973}
   - component: {fileID: 1326774410132410814}
   m_Layer: 8
-  m_Name: Shadow
+  m_Name: ShadowPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
