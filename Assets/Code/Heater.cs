@@ -21,11 +21,11 @@ public class Heater : MonoBehaviour
     {
         if (m_playerDeath.m_isPraisingTheSun)
         {
-            m_playerSpriteRenderer.color = new Vector4(1, (float)(1 - m_playerDeath.m_expositionRate), (float)(1 - m_playerDeath.m_expositionRate), 1);
+            m_playerSpriteRenderer.color = new Vector4(1, (float)(1 - m_playerDeath.m_expositionRate), (float)(1 - m_playerDeath.m_expositionRate), m_playerSpriteRenderer.color.a);
         }
         else
         {
-            m_playerSpriteRenderer.color = new Vector4(1, (float)(1 - m_playerDeath.m_expositionRate), (float)(1 - m_playerDeath.m_expositionRate), 1);
+            m_playerSpriteRenderer.color = new Vector4(1, (float)(1 - m_playerDeath.m_expositionRate), (float)(1 - m_playerDeath.m_expositionRate), m_playerSpriteRenderer.color.a);
         }
     }
 }
