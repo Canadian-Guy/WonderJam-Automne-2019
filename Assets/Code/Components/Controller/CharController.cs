@@ -70,7 +70,7 @@ public class CharController : MonoBehaviour
 
         Move(targetVelocity);
 
-        if((targetVelocity.x > 0 && !m_directionX) || (targetVelocity.x < 0 && m_directionX)) Flip();
+        if((targetVelocity.x > 0.1 && !m_directionX) || (targetVelocity.x < -0.1 && m_directionX)) Flip();
     }
 
     private void ApplyGravity() {
