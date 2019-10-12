@@ -1035,7 +1035,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.47, y: 0.23}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.47, y: 0.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1398,11 +1398,6 @@ PrefabInstance:
       propertyPath: m_spawnPoint
       value: 
       objectReference: {fileID: 1880283858}
-    - target: {fileID: 5293250919331040612, guid: fa7b48f35a77c5146bbdf43d78fa5215,
-        type: 3}
-      propertyPath: m_smokeSystem
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa7b48f35a77c5146bbdf43d78fa5215, type: 3}
 --- !u!1 &988713110
@@ -3142,11 +3137,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isPraisingTheSun
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 459563966169834232, guid: 32ccfad4a9f29e7408151b314206e9c5,
-        type: 3}
-      propertyPath: m_smokeSystem
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ccfad4a9f29e7408151b314206e9c5, type: 3}
