@@ -100,6 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerId: 1
   m_playerController: {fileID: 0}
+  m_switched: 0
+  m_hasEnteredGame: 0
+  m_puppet: 0
+  m_audioSource: {fileID: 0}
 --- !u!114 &4217719493262026056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +126,7 @@ MonoBehaviour:
   m_maxJumpHoldTime: 0.3
   m_fallVelocity: -50
   m_jumpCooldown: 0.5
+  m_jumpSound: {fileID: 11400000, guid: da7634595605c3b4d9538d24d22d11c3, type: 2}
   m_player: {fileID: 0}
   m_directionX: 0
 --- !u!50 &4217719493262026059
@@ -201,3 +206,4 @@ MonoBehaviour:
   m_spawnPoint: {fileID: 0}
   m_expositionRateLevel: {fileID: 0}
   m_spawnPosition: {fileID: 0}
+  m_deathSound: {fileID: 11400000, guid: 1e3352dd3477ad44385d05cdb86bb833, type: 2}

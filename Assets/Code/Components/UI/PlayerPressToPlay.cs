@@ -17,6 +17,8 @@ public class PlayerPressToPlay : MonoBehaviour
     }
 
     void Update() {
+        if(m_player == null) m_player = Game.m_players.GetPlayerFromId(m_playerId);
+
         if(m_player.m_hasEnteredGame && m_enabled) {
             m_objectToShow.SetActive(false);
             m_enabled = false;

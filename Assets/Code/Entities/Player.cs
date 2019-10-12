@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool m_hasEnteredGame = false;
     [HideInInspector] public bool m_puppet = false;
     [HideInInspector] public Controller m_lastUsed;
+    [HideInInspector] public AudioSource m_audioSource;
 
     public void Start() {
         Game.m_players.m_playerList.Add(this);
@@ -19,11 +20,13 @@ public class Player : MonoBehaviour
         m_rewiredPlayer = ReInput.players.GetPlayer(m_playerId);
         m_playerController = GetComponent<CharController>();
         m_playerController.m_player = this;
+
+        m_audioSource = gameObject.AddComponent<AudioSource>();
+        Game.m_audio.AddAudioSource(m_audioSource, AudioCategories.SFX);
     }
 
     void Update() {
         Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
-        //Debug.Log("Player " + m_playerId + ": entered? " + m_hasEnteredGame + " switched? " + m_switched + " puppet? " + m_puppet);
 
         if(!m_hasEnteredGame && m_rewiredPlayer.GetButtonDown("Interact") &&
             (IsPlaying() || (m_puppet && otherPlayer.m_lastUsed != GetLastActiveController()))) {
