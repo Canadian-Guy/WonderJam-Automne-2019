@@ -6,7 +6,8 @@ public class Grabber : MonoBehaviour
 {
     public GameObject inHandAnchor;
     public GameObject dropAnchor;
-    public LayerMask groundLayerMask;
+    public List<LayerMask> invalidGrabLayers;
+    public List<LayerMask> invalidDropLayers;
 
     private bool grabbing = false;
     private Grabbable grabbable = null;
@@ -14,6 +15,8 @@ public class Grabber : MonoBehaviour
 
     public void Awake()
     {
+        //invalidDropLayers = new List<LayerMask>();
+
         player = gameObject.GetComponent<Player>();
 
         if (!inHandAnchor)
@@ -34,7 +37,9 @@ public class Grabber : MonoBehaviour
             this.grabbable = grabbable; 
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(inHandAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y), 
-                0, groundLayerMask);
+                0, getCombineLayerMask(invalidGrabLayers));
+
+            Debug.Log(invalidDropLayers.Count);
 
             if (!overlap)
             {
@@ -58,15 +63,15 @@ public class Grabber : MonoBehaviour
         {
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),
-                0, groundLayerMask);
+                0, getCombineLayerMask(invalidDropLayers));
 
-            if (overlap)
+            if (!overlap)
             {
                 Debug.Log("No overlap");
 
-                grabbable.transform.parent.parent.parent = dropAnchor.transform;
+                grabbable.transform.parent.parent = dropAnchor.transform;
                 grabbable.transform.parent.localPosition = Vector2.zero;
-                grabbable.transform.parent.parent.parent = null;
+                grabbable.transform.parent.parent = null;
 
                 grabbing = false;
                 grabbable.Release();
@@ -77,6 +82,17 @@ public class Grabber : MonoBehaviour
             // Actualy drop the shnit
             
         }
+    }
+
+
+    private LayerMask getCombineLayerMask(List<LayerMask> layers)
+    {
+        LayerMask result = 0;
+
+        foreach(LayerMask l in layers)
+            result |= l;
+
+        return result;
     }
 
     public bool isGrabbing() { return grabbing; }

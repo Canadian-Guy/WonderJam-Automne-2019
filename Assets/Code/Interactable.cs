@@ -87,12 +87,12 @@ public class Interactable : MonoBehaviour
     {
         canBeInteracted = false;
         interactTooltip.enabled = false;
+        interactors.Clear();
     }
 
     protected void ResetInteraction()
     {
         canBeInteracted = true;
-        interactTooltip.enabled = interactors.Count > 0;
     }
 
     private IEnumerator ApplyInteractionCooldown()
