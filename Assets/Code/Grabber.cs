@@ -9,13 +9,13 @@ public class Grabber : MonoBehaviour
     public List<LayerMask> invalidGrabLayers;
     public List<LayerMask> invalidDropLayers;
 
-    private bool grabbing = false;
-    private Grabbable grabbable = null;
+    public bool Grabbing { get; set; }
+    public Grabbable Grabbable { get; set; }
+
     private Player player;
 
     public void Awake()
     {
-        //invalidDropLayers = new List<LayerMask>();
 
         player = gameObject.GetComponent<Player>();
 
@@ -25,16 +25,16 @@ public class Grabber : MonoBehaviour
 
     public void Update()
     {
-        if (grabbing)
+        if (Grabbing)
             Drop();
     }
 
 
     public bool Grab(Grabbable grabbable)
     {
-        if (!grabbing)
+        if (!Grabbing)
         {
-            this.grabbable = grabbable; 
+            Grabbable = grabbable; 
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(inHandAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y), 
                 0, getCombineLayerMask(invalidGrabLayers));
@@ -47,7 +47,7 @@ public class Grabber : MonoBehaviour
                 grabbable.transform.parent.parent = inHandAnchor.transform;
                 grabbable.transform.parent.localPosition = Vector2.zero;
 
-                grabbing = true;
+                Grabbing = true;
                 return true;
             }
 
@@ -61,7 +61,7 @@ public class Grabber : MonoBehaviour
     {
         if (player.m_rewiredPlayer.GetButtonDown("Interact"))
         {
-            SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
+            SpriteRenderer renderer = Grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),
                 0, getCombineLayerMask(invalidDropLayers));
 
@@ -69,12 +69,12 @@ public class Grabber : MonoBehaviour
             {
                 Debug.Log("No overlap");
 
-                grabbable.transform.parent.parent = dropAnchor.transform;
-                grabbable.transform.parent.localPosition = Vector2.zero;
-                grabbable.transform.parent.parent = null;
+                Grabbable.transform.parent.parent = dropAnchor.transform;
+                Grabbable.transform.parent.localPosition = Vector2.zero;
+                Grabbable.transform.parent.parent = null;
 
-                grabbing = false;
-                grabbable.Release();
+                Grabbing = false;
+                Grabbable.Release();
             }
 
             Debug.Log("Theres an overlap");
@@ -94,7 +94,4 @@ public class Grabber : MonoBehaviour
 
         return result;
     }
-
-    public bool isGrabbing() { return grabbing; }
-    public Grabbable GetGrabbable() { return grabbable; }
 }
