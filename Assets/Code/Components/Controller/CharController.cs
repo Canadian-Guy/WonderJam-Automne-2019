@@ -52,6 +52,10 @@ public class CharController : MonoBehaviour
         if(m_source == null) m_source = GetComponent<AudioSource>();
 
 
+        if (m_player.GetComponent<Grabber>().isGrabbing()) m_animator.SetBool("isgrabbing", true);
+        else if (!m_player.GetComponent<Grabber>().isGrabbing()) m_animator.SetBool("isgrabbing", false);
+
+
         Vector2 groundedSize = new Vector2(0.34f, 0.1f);
         Vector2 groundedStart = new Vector2(transform.position.x - 0.005f, transform.position.y - 0.5f);
         int groundingSections = 10;
@@ -78,9 +82,6 @@ public class CharController : MonoBehaviour
 
         if (!m_isGrounded) ApplyGravity();
         else if (m_isGrounded) m_animator.SetBool("isjumping", false);
-
-        if (m_player.GetComponent<Grabber>().isGrabbing()) m_animator.SetBool("isgrabbing", true);
-        else if (!m_player.GetComponent<Grabber>().isGrabbing()) m_animator.SetBool("isgrabbing", false);
 
         if (!m_player.m_hasEnteredGame && !m_player.m_puppet) {
             m_rigidbody2D.velocity = new Vector2(0, m_rigidbody2D.velocity.y);
