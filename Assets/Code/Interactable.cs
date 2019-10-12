@@ -38,6 +38,7 @@ public class Interactable : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Wololol");
         if (other.tag == "Player")
         {
             interactors.Add(other.gameObject.GetComponent<Player>());
@@ -67,19 +68,32 @@ public class Interactable : MonoBehaviour
         {
             foreach (Player player in new List<Player>(interactors))
                 if (player.m_rewiredPlayer.GetButtonDown("Interact"))
-                {
-                    if (onInteraction != null)
-                    {
-                        canBeInteracted = false;
-                        interactTooltip.enabled = false;
-
-                        onInteraction.Invoke();
-                        StartCoroutine(ApplyInteractionCooldown());
-                    }
+                {             
+                    Interact(player);
                 }
         }
     }
 
+
+    protected virtual void Interact(Player player)
+    {
+        StopInteraction();
+
+        onInteraction.Invoke();
+        StartCoroutine(ApplyInteractionCooldown());
+    }
+
+    protected void StopInteraction()
+    {
+        canBeInteracted = false;
+        interactTooltip.enabled = false;
+        interactors.Clear();
+    }
+
+    protected void ResetInteraction()
+    {
+        canBeInteracted = true;
+    }
 
     private IEnumerator ApplyInteractionCooldown()
     {
@@ -88,7 +102,6 @@ public class Interactable : MonoBehaviour
         else
             yield return null;
 
-        canBeInteracted = true;
-        interactTooltip.enabled = interactors.Count > 0;
+        ResetInteraction();
     }
 }

@@ -16,6 +16,7 @@ public class LevelEnd : MonoBehaviour
     [HideInInspector]
     public List<Collider2D> collisions = new List<Collider2D>();
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,4 +60,6 @@ public class LevelEnd : MonoBehaviour
             collisions.Remove(collision);
         }
     }
+
+   
 }

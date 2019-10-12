@@ -7,6 +7,7 @@ public class ShadowTracker : MonoBehaviour
 
     [HideInInspector] public int m_NumberOfShadowZones;
     private PlayerDeath m_PlayerDeathComponent;
+    private SpriteRenderer m_playerSpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
