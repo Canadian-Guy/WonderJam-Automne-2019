@@ -8,8 +8,10 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public List<Player> m_playerList = new List<Player>();
     [HideInInspector] public int m_playingPlayers = 0;
     [HideInInspector] public List<bool> m_previousPlayerInteractions;
+    [HideInInspector] public bool m_canSwitch = true;
 
     void Start() {
+        m_canSwitch = true;
         m_previousPlayerInteractions = new List<bool>();
         SceneManager.sceneLoaded += OnSceneLoad;
         StartCoroutine(UpdatePlayingPlayersAmount());

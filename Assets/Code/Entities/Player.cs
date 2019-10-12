@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool m_puppet = false;
     [HideInInspector] public Controller m_lastUsed;
     [HideInInspector] public AudioSource m_audioSource;
+    [HideInInspector] public SpriteRenderer m_spriteRenderer;
+    [HideInInspector] public SpriteRenderer m_switchTooltip;
 
     public void Start() {
         Game.m_players.m_playerList.Add(this);
@@ -20,6 +22,10 @@ public class Player : MonoBehaviour
         m_rewiredPlayer = ReInput.players.GetPlayer(m_playerId);
         m_playerController = GetComponent<CharController>();
         m_playerController.m_player = this;
+
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_switchTooltip = transform.Find("SwitchTooltip").GetComponent<SpriteRenderer>();
+        m_switchTooltip.enabled = false;
 
         m_audioSource = gameObject.AddComponent<AudioSource>();
         Game.m_audio.AddAudioSource(m_audioSource, AudioCategories.SFX);
@@ -37,10 +43,15 @@ public class Player : MonoBehaviour
             m_switched = false;
             m_puppet = false;
             otherPlayer.m_switched = false;
+
+            if(otherPlayer.m_hasEnteredGame) Game.m_players.m_canSwitch = false;
+
+            ToggleSwitchTooltip(false);
+            otherPlayer.ToggleSwitchTooltip(false);
         }
 
-        if(Game.m_players.m_playingPlayers == 1 && (m_hasEnteredGame || m_puppet && otherPlayer.m_lastUsed == GetLastActiveController()) && 
-            m_rewiredPlayer.GetButtonDown("Switch")) {
+        if(Game.m_players.m_canSwitch && Game.m_players.m_playingPlayers == 1 && 
+            (m_hasEnteredGame || m_puppet && otherPlayer.m_lastUsed == GetLastActiveController()) && m_rewiredPlayer.GetButtonDown("Switch")) {
             if(m_hasEnteredGame) m_lastUsed = GetLastActiveController();
             otherPlayer.m_rewiredPlayer.controllers.AddController(GetLastActiveController(), true);
 
@@ -48,7 +59,18 @@ public class Player : MonoBehaviour
             otherPlayer.m_switched = otherPlayer.m_hasEnteredGame ? !otherPlayer.m_switched : false;
             m_puppet = m_hasEnteredGame ? false : otherPlayer.m_switched;
             otherPlayer.m_puppet = m_switched;
+
+            if(otherPlayer.m_puppet) {
+                ToggleSwitchTooltip(true);
+                otherPlayer.ToggleSwitchTooltip(false);
+            } else {
+                ToggleSwitchTooltip(true);
+                otherPlayer.ToggleSwitchTooltip(false);
+            }
         }
+
+        if(Game.m_players.m_playingPlayers == 1 && !m_hasEnteredGame && !m_switchTooltip.enabled && !otherPlayer.m_switchTooltip.enabled)
+            ToggleSwitchTooltip(true);
     }
 
     public bool IsPlaying() {
@@ -56,6 +78,14 @@ public class Player : MonoBehaviour
 
         return (m_rewiredPlayer.controllers.GetLastActiveController() != null && !other.m_switched) ||
                (other.m_rewiredPlayer.controllers.GetLastActiveController() != null && m_switched);
+    }
+
+    public void ToggleSwitchTooltip(bool p_on) {
+        m_switchTooltip.enabled = p_on;
+        m_spriteRenderer.color = new Color(m_spriteRenderer.color.r,
+                                           m_spriteRenderer.color.g,
+                                           m_spriteRenderer.color.b,
+                                           p_on ? 100f / 255f : 1f);
     }
 
     private Controller GetLastActiveController() {
