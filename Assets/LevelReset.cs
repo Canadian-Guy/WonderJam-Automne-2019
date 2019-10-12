@@ -14,7 +14,7 @@ public class LevelReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_ResetPoweredPlayer.m_rewiredPlayer.GetButtonDown("Reset"))
+        if (Time.timeScale == 1f && m_ResetPoweredPlayer.m_rewiredPlayer.GetButtonDown("Reset"))
         {
             Reset();
         }

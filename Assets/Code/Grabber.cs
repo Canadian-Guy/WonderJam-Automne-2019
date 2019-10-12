@@ -59,7 +59,7 @@ public class Grabber : MonoBehaviour
 
     public void Drop()
     {
-        if (player.m_rewiredPlayer.GetButtonDown("Interact"))
+        if (Time.timeScale == 1f && player.m_rewiredPlayer.GetButtonDown("Interact"))
         {
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),

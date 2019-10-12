@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public SpriteRenderer m_switchTooltip;
 
     public void Start() {
+        m_switched = false;
+        m_hasEnteredGame = false;
+        m_puppet = false;
+        m_lastUsed = null;
+
         Game.m_players.m_playerList.Add(this);
 
         m_rewiredPlayer = ReInput.players.GetPlayer(m_playerId);
@@ -33,6 +38,8 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
+        if(Time.timeScale == 0f) return;
+
         Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
 
         if(!m_hasEnteredGame && m_rewiredPlayer.GetButtonDown("Interact") &&
@@ -72,6 +79,11 @@ public class Player : MonoBehaviour
 
         if(Game.m_players.m_playingPlayers == 1 && !m_hasEnteredGame && !m_switchTooltip.enabled && !otherPlayer.m_switchTooltip.enabled)
             ToggleSwitchTooltip(true);
+    }
+
+    public void ResetController() {
+        if(m_switched && m_lastUsed != null)
+            m_rewiredPlayer.controllers.AddController(m_lastUsed, true);
     }
 
     public bool IsPlaying() {
