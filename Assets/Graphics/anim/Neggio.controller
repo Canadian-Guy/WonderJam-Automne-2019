@@ -89,7 +89,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrabing
+    m_ConditionEvent: isgrabbing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8821103111627705459}
@@ -126,7 +126,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isgrabing
+  - m_Name: isgrabbing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -245,7 +245,7 @@ AnimatorStateTransition:
     m_ConditionEvent: speed
     m_EventTreshold: 0.01
   - m_ConditionMode: 2
-    m_ConditionEvent: isgrabing
+    m_ConditionEvent: isgrabbing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7099748386036399996}
@@ -354,7 +354,7 @@ AnimatorStateTransition:
     m_ConditionEvent: speed
     m_EventTreshold: 0.01
   - m_ConditionMode: 2
-    m_ConditionEvent: isgrabing
+    m_ConditionEvent: isgrabbing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 411050816377995540}
