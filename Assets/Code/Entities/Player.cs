@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public CharController m_playerController;
     [HideInInspector] public Rewired.Player m_rewiredPlayer;
-
-    private bool m_switched = false;
+    [HideInInspector] public bool m_switched = false;
+    [HideInInspector] public bool m_hasEnteredGame = false;
+    [HideInInspector] public bool m_puppet = false;
+    [HideInInspector] public Controller m_lastUsed;
 
     public void Start() {
         Game.m_players.m_playerList.Add(this);
@@ -20,21 +22,36 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
-        if(Game.m_players.m_playingPlayers == 1 && m_rewiredPlayer.GetButtonDown("Switch")) {
-            Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
-            Controller lastActive = GetLastActiveController();
+        Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
 
-            otherPlayer.m_rewiredPlayer.controllers.AddController(lastActive, true);
-            m_switched = !m_switched;
-        } else if(Game.m_players.m_playingPlayers == 2 && m_switched) {
-            Player otherPlayer = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
-            Controller current = GetLastActiveController();
-            Controller otherCurrent = otherPlayer.GetLastActiveController();
+        if(!m_hasEnteredGame && m_rewiredPlayer.GetButtonDown("Interact") &&
+            (IsPlaying() || (m_puppet && otherPlayer.m_lastUsed != GetLastActiveController()))) {
+            if(m_puppet)
+                otherPlayer.m_rewiredPlayer.controllers.AddController(otherPlayer.m_lastUsed, true);
 
-            otherPlayer.m_rewiredPlayer.controllers.AddController(current, true);
-            m_rewiredPlayer.controllers.AddController(otherCurrent, true);
+            m_hasEnteredGame = true;
             m_switched = false;
+            m_puppet = false;
+            otherPlayer.m_switched = false;
         }
+
+        if(Game.m_players.m_playingPlayers == 1 && (m_hasEnteredGame || m_puppet && otherPlayer.m_lastUsed == GetLastActiveController()) && 
+            m_rewiredPlayer.GetButtonDown("Switch")) {
+            if(m_hasEnteredGame) m_lastUsed = GetLastActiveController();
+            otherPlayer.m_rewiredPlayer.controllers.AddController(GetLastActiveController(), true);
+
+            m_switched = m_hasEnteredGame;
+            otherPlayer.m_switched = otherPlayer.m_hasEnteredGame ? !otherPlayer.m_switched : false;
+            m_puppet = m_hasEnteredGame ? false : otherPlayer.m_switched;
+            otherPlayer.m_puppet = m_switched;
+        }
+    }
+
+    public bool IsPlaying() {
+        Player other = Game.m_players.GetPlayerFromId(m_playerId == 0 ? 1 : 0);
+
+        return (m_rewiredPlayer.controllers.GetLastActiveController() != null && !other.m_switched) ||
+               (other.m_rewiredPlayer.controllers.GetLastActiveController() != null && m_switched);
     }
 
     private Controller GetLastActiveController() {
