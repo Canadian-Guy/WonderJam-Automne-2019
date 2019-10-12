@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
 
     IEnumerator SetTimer()
     {
-        gameObject.GetComponent<TMP_Text>().text = time.ToString("F3") + " s";
+        gameObject.GetComponent<TMP_Text>().text = time.ToString("F2") + " s";
         time+=0.01f;
         yield return new WaitForSeconds(0.01f);
         StartCoroutine(SetTimer());
