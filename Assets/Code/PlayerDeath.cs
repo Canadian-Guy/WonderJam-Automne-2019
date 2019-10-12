@@ -55,7 +55,7 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    void Death()
+    public void Death()
     {
         if(m_deathSound != null) m_deathSound.Play(m_source);
 

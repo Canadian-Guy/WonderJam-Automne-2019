@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5811805065058610611}
   - component: {fileID: 7085931969055035472}
   - component: {fileID: 1528438383644282075}
+  - component: {fileID: -4181072491435700782}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -188,6 +189,7 @@ MonoBehaviour:
   m_audioSource: {fileID: 0}
   m_spriteRenderer: {fileID: 0}
   m_switchTooltip: {fileID: 0}
+  m_animator: {fileID: 0}
 --- !u!114 &5811805065058610609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +312,31 @@ MonoBehaviour:
   m_expositionRateLevel: {fileID: 0}
   m_spawnPosition: {fileID: 0}
   m_deathSound: {fileID: 11400000, guid: 1e3352dd3477ad44385d05cdb86bb833, type: 2}
+--- !u!114 &-4181072491435700782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811805065058610612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192d6edf4afaebe4abae9cc5f19dc5c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event: {fileID: 11400000, guid: 2af834a5e89f3034aa5d03f1afdfe61d, type: 2}
+  m_responseDelay: 0
+  m_response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1528438383644282075}
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
