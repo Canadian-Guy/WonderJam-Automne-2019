@@ -55,13 +55,16 @@ public class CharController : MonoBehaviour
 
         if(!m_player.m_hasEnteredGame && !m_player.m_puppet) {
             m_rigidbody2D.velocity = new Vector2(0, m_rigidbody2D.velocity.y);
+            m_player.m_animator.SetBool("isWalking", false);
             return;
         }
 
         if(m_player.m_puppet &&
             Game.m_players.GetPlayerFromId(m_player.m_playerId == 0 ? 1 : 0).m_lastUsed !=
-            m_player.m_rewiredPlayer.controllers.GetLastActiveController())
+            m_player.m_rewiredPlayer.controllers.GetLastActiveController()) {
+            m_player.m_animator.SetBool("isWalking", false);
             return;
+        }
 
         float xMove = m_player.m_rewiredPlayer.GetAxisRaw("MoveX");
         float yMove = 0f;
@@ -83,6 +86,9 @@ public class CharController : MonoBehaviour
 
         xMove *= Time.deltaTime;
         yMove *= Time.deltaTime;
+
+        if(Mathf.Abs(xMove) > 0.05) m_player.m_animator.SetBool("isWalking", true);
+        else m_player.m_animator.SetBool("isWalking", false);
 
         Vector3 targetVelocity = new Vector2(xMove * (m_speed / Time.unscaledDeltaTime) + m_rigidbody2D.velocity.x / 2, 
                                              yMove * (m_jumpSpeed / Time.unscaledDeltaTime));
