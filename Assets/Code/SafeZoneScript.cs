@@ -20,7 +20,7 @@ public class SafeZoneScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {
+    {;
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<ShadowTracker>().EnterAZone();
