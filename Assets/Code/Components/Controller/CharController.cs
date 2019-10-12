@@ -48,8 +48,8 @@ public class CharController : MonoBehaviour
     void Update() {
         if(m_source == null) m_source = GetComponent<AudioSource>();
 
-        m_isGrounded = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 0.075f), 
-                                            new Vector2(0.15f, 0.15f), 0, m_groundLayer);
+        m_isGrounded = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 0.25f), 
+                                            new Vector2(0.5f, 0.5f), 0, m_groundLayer);
 
         if(!m_isGrounded) ApplyGravity();
 
@@ -107,6 +107,7 @@ public class CharController : MonoBehaviour
         Vector3 localScale = transform.localScale;
 
         localScale.x *= -1;
+        m_player.m_switchTooltip.flipX = !m_player.m_switchTooltip.flipX;
         transform.localScale = localScale;
         m_directionX = !m_directionX;
     }
