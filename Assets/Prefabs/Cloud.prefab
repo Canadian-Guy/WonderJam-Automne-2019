@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2305445b2174bc046a6f65425f5a1711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TravelSpeed: 0.01
+  m_TravelSpeed: 0.05
   m_TravelRight: 1
 --- !u!60 &9019857912576223738
 PolygonCollider2D:
@@ -300,6 +300,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_BoxCollider2D
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -364,11 +369,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 32.17792
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_BoxCollider2D
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88, type: 3}

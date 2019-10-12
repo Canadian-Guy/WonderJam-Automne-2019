@@ -39,7 +39,6 @@ public class LevelEnd : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("roflmaomg");
         if (collision.tag == "Player")
         {
             
