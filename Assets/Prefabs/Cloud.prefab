@@ -300,20 +300,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_BoxCollider2D
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.255
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.824
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
@@ -363,12 +358,17 @@ PrefabInstance:
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 18.36505
+      value: 18.918573
       objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 81.529144
+      value: 32.17792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_BoxCollider2D
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88, type: 3}
