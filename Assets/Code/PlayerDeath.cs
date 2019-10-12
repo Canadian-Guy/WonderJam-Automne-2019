@@ -62,6 +62,7 @@ public class PlayerDeath : MonoBehaviour
 
         transform.position = m_spawnPosition.position;
         m_expositionRate = 0d;
+        gameObject.GetComponent<Flasher>().m_flashSpeed = gameObject.GetComponent<Flasher>().m_baseFlashSpeed;
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
     }
 
