@@ -48,8 +48,29 @@ public class CharController : MonoBehaviour
     void Update() {
         if(m_source == null) m_source = GetComponent<AudioSource>();
 
-        m_isGrounded = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 0.25f), 
-                                            new Vector2(0.5f, 0.5f), 0, m_groundLayer);
+        Vector2 groundedSize = new Vector2(0.34f, 0.1f);
+        Vector2 groundedStart = new Vector2(transform.position.x - 0.005f, transform.position.y - 0.5f);
+        int groundingSections = 10;
+        int hitSections = 0;
+
+        for(int i = 0; i < groundingSections; i++) {
+            bool hit = Physics2D.OverlapBox(new Vector2(groundedStart.x - groundedSize.x / groundingSections * (i + 1) / 2f + groundedSize.x / 3f, groundedStart.y),
+                                            new Vector2(groundedSize.x / groundingSections, groundedSize.y), 0, m_groundLayer);
+            
+            if(hit) hitSections++;
+
+            float xLow = groundedStart.x - groundedSize.x / groundingSections * (i + 1) / 2f - groundedSize.x / groundingSections + groundedSize.x / 3f;
+            float xHigh = groundedStart.x - groundedSize.x / groundingSections * (i + 1) / 2f + groundedSize.x / groundingSections + groundedSize.x / 3f;
+            float yLow = groundedStart.y - groundedSize.y / 2;
+            float yHigh = groundedStart.y + groundedSize.y / 2;
+
+            Debug.DrawLine(new Vector2(xLow, yLow), new Vector2(xHigh, yLow), hit ? Color.green : Color.red);
+            Debug.DrawLine(new Vector2(xLow, yHigh), new Vector2(xHigh, yHigh), hit ? Color.green : Color.red);
+            Debug.DrawLine(new Vector2(xLow, yLow), new Vector2(xLow, yHigh), hit ? Color.green : Color.red);
+            Debug.DrawLine(new Vector2(xHigh, yLow), new Vector2(xHigh, yHigh), hit ? Color.green : Color.red);
+        }
+
+        m_isGrounded = hitSections >= 2;
 
         if(!m_isGrounded) ApplyGravity();
 
