@@ -1455,11 +1455,6 @@ PrefabInstance:
       propertyPath: m_spawnPoint
       value: 
       objectReference: {fileID: 1880283858}
-    - target: {fileID: 5293250919331040612, guid: fa7b48f35a77c5146bbdf43d78fa5215,
-        type: 3}
-      propertyPath: m_smokeSystem
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa7b48f35a77c5146bbdf43d78fa5215, type: 3}
 --- !u!1 &988713110
