@@ -7,6 +7,9 @@ public class MenuHandler : MonoBehaviour
     [Tooltip("The object holding the pause screen, if not in the main menu")]
     public GameObject m_pauseScreen;
 
+    [Tooltip("An object to hide when pausing")]
+    public GameObject m_hideOnPause;
+
     void Update() {
         bool mainMenu = SceneManager.GetActiveScene().buildIndex == 1;
 
@@ -28,12 +31,10 @@ public class MenuHandler : MonoBehaviour
 
             if(interact && mainMenu) {
                 for(int i = 0; i < 2; i++) {
-                    DoubleBool interactions = new DoubleBool();
+                    Game.m_players.m_previousPlayerInteractions.Add(player.id == i);
 
-                    interactions.First = player.id == i;
-                    interactions.Second = false;
-
-                    Game.m_players.m_previousPlayerInteractions.Add(interactions);
+                    if(Game.m_players.m_playerList.Count > i)
+                        Game.m_players.GetPlayerFromId(i).ResetController();
                 }
 
                 StartGame();
@@ -69,11 +70,15 @@ public class MenuHandler : MonoBehaviour
 
     private void Pause() {
         Time.timeScale = 0f;
+
+        if(m_hideOnPause) m_hideOnPause.SetActive(false);
         m_pauseScreen.SetActive(true);
     }
 
     private void Resume() {
         Time.timeScale = 1f;
+
+        if(m_hideOnPause) m_hideOnPause.SetActive(true);
         m_pauseScreen.SetActive(false);
     }
 }

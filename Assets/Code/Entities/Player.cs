@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
                                            p_on ? 100f / 255f : 1f);
     }
 
-    private Controller GetLastActiveController() {
+    public Controller GetLastActiveController() {
         Controller controller = null;
 
         if(m_rewiredPlayer.controllers.joystickCount > 1)

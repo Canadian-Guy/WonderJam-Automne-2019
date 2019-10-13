@@ -7,12 +7,11 @@ public class PlayerManager : MonoBehaviour
 {
     [HideInInspector] public List<Player> m_playerList = new List<Player>();
     [HideInInspector] public int m_playingPlayers = 0;
-    [HideInInspector] public List<DoubleBool> m_previousPlayerInteractions;
+    [HideInInspector] public List<bool> m_previousPlayerInteractions;
     [HideInInspector] public bool m_canSwitch = true;
 
     void Start() {
         m_canSwitch = true;
-        m_previousPlayerInteractions = new List<DoubleBool>();
         SceneManager.sceneLoaded += OnSceneLoad;
         StartCoroutine(UpdatePlayingPlayersAmount());
     }
@@ -21,12 +20,12 @@ public class PlayerManager : MonoBehaviour
         if(m_playerList.Count > 0) {
             m_previousPlayerInteractions.Clear();
 
-            foreach(Player player in m_playerList) {
-                DoubleBool interactions = new DoubleBool();
+            for(int i = 0; i < 2; i++) {
+                Player player = m_playerList.Find(p => p.m_playerId == i);
 
-                interactions.First = player.m_hasEnteredGame && player.IsPlaying();
-                interactions.Second = player.m_switched;
-                m_previousPlayerInteractions.Add(interactions);
+                m_previousPlayerInteractions.Add(player.m_hasEnteredGame && player.IsPlaying());
+
+                player.ResetController();
             }
         }
 
@@ -38,20 +37,8 @@ public class PlayerManager : MonoBehaviour
         m_playingPlayers = 0;
 
         if(m_previousPlayerInteractions.Count > 0 && m_playerList.Count > 0) {
-            for(int i = 0; i < m_playerList.Count; i++) {
-                Player player = m_playerList.Find(p => p.m_playerId == i);
-
-                player.m_hasEnteredGame = m_previousPlayerInteractions[i].First;
-
-                if(m_previousPlayerInteractions[i].Second) {
-                    Player otherPlayer = GetPlayerFromId(i == 0 ? 1 : 0);
-
-                    if(!otherPlayer.m_hasEnteredGame) {
-                        player.m_switched = true;
-                        otherPlayer.m_puppet = true;
-                    }
-                }
-            }
+            for(int i = 0; i < 2; i++)
+                m_playerList.Find(p => p.m_playerId == i).m_hasEnteredGame = m_previousPlayerInteractions[i];
 
             m_previousPlayerInteractions.Clear();
         }
@@ -59,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         foreach(Player player in m_playerList)
             if(player.IsPlaying()) m_playingPlayers++;
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
 
         StartCoroutine(UpdatePlayingPlayersAmount());
     }
@@ -71,9 +58,4 @@ public class PlayerManager : MonoBehaviour
 
         return null;
     }
-}
-
-public struct DoubleBool {
-    public bool First;
-    public bool Second;
 }

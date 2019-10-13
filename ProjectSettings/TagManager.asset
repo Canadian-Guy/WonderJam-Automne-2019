@@ -23,7 +23,7 @@ TagManager:
   - Shadow
   - Platform
   - Background
-  - 
+  - Lights
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3683087113
+    locked: 0
+  - name: Lights
+    uniqueID: 3379409709
     locked: 0
