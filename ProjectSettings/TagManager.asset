@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - KillZone
+  - PlatformEnd
+  - PlatformStart
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -13,6 +17,12 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - Ground
+  - Cloud
+  - Shadow
+  - Platform
+  - Background
   - 
   - 
   - 
@@ -30,14 +40,26 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - postprocessing
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1404797755
+    locked: 0
+  - name: Player
+    uniqueID: 2287330303
+    locked: 0
+  - name: Objects
+    uniqueID: 3639094577
+    locked: 0
+  - name: Shadow
+    uniqueID: 671006603
+    locked: 0
+  - name: Cloud
+    uniqueID: 243388645
+    locked: 0
+  - name: Ground
+    uniqueID: 3683087113
     locked: 0
