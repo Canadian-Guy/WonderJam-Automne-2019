@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerId: 1
+  weight: 1
   m_playerController: {fileID: 0}
   m_switched: 0
   m_hasEnteredGame: 0
@@ -474,6 +475,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System
       objectReference: {fileID: 0}
+    - target: {fileID: 2953699315115419053, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2102942300236736581, guid: da099c9aea29bed4590487183af6347e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -528,6 +534,86 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285660698783507330, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285660698783507330, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285660698783507330, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285660698783507330, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285660698783507330, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: UVModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07482fd5a2000c94c9efac68ab743a0e, type: 2}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_SortMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_RenderAlignment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2007636993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942252477316500311, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da099c9aea29bed4590487183af6347e, type: 3}

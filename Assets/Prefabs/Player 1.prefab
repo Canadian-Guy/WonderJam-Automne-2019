@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerId: 0
+  weight: 1
   m_playerController: {fileID: 0}
   m_switched: 0
   m_hasEnteredGame: 0
@@ -473,6 +474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953699315115419053, guid: da099c9aea29bed4590487183af6347e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2102942300236736581, guid: da099c9aea29bed4590487183af6347e,
         type: 3}
