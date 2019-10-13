@@ -163,6 +163,7 @@ MonoBehaviour:
   objLock: {fileID: 2655091373220133865}
   frame1: {fileID: 2655091373662400695}
   frame2: {fileID: 6241904005077660650}
+  triggerZone: {fileID: 2655091373548456374}
 --- !u!1 &2655091373220133865
 GameObject:
   m_ObjectHideFlags: 0
