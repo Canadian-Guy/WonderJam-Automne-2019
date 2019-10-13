@@ -12,9 +12,9 @@ public class Resetable : MonoBehaviour
 
     public void Reset()
     {
-        m_ObjectToReset.transform.SetParent(null);
+        m_ObjectToReset.transform.parent = null;
         m_ObjectToReset.transform.position = gameObject.transform.position;
-
+        
         //Destroy(m_ObjectToReset);   //Destroy the old boi
         //m_ObjectToReset = Instantiate(m_Prefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);    //Spawn a new boi, whomst becomes the new old boi
     }

@@ -9,7 +9,6 @@ public class PlayerDeath : MonoBehaviour
     public bool m_isPraisingTheSun = false;
     public double m_expositionRate = 0d;
     public GameObject m_spawnPoint;
-    //public GameObject m_player;
     public Slider m_expositionRateLevel;
     [HideInInspector]
     public Transform m_spawnPosition;
@@ -61,12 +60,24 @@ public class PlayerDeath : MonoBehaviour
     public void Death()
     {
         Game.m_scores.m_deaths++;
-
+        gameObject.GetComponent<Grabber>().ForceDrop();
+        gameObject.GetComponent<Grabber>().Grabbing = false;
+        gameObject.GetComponent<Grabber>().Grabbable = null;
         if(m_deathSound != null) m_deathSound.Play(m_source);
-
-        transform.position = m_spawnPosition.position;
+        gameObject.transform.position = m_spawnPosition.position;
         m_expositionRate = 0d;
+        
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
+    }
+
+    public void Reset()
+    {
+        Game.m_scores.m_deaths++;
+        gameObject.GetComponent<Grabber>().Grabbable.Release();
+        gameObject.GetComponent<Grabber>().Grabbing = false;
+        gameObject.GetComponent<Grabber>().Grabbable = null;
+        gameObject.transform.position = m_spawnPosition.position;
+        m_expositionRate = 0d;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,7 +8,7 @@ public class Grabbable : Interactable
     public bool isCover;
     public Player EtienneIsDumb;
 
-    protected override void Interact(Player player)
+    public override void Interact(Player player)
     {
         Grabber grabber = player.GetComponent<Grabber>();
         EtienneIsDumb = player;
@@ -24,7 +24,8 @@ public class Grabbable : Interactable
 
     public void Release()
     {
-        EtienneIsDumb.GetComponent<ShadowTracker>().ExitAZone();
+        if(isCover)
+            EtienneIsDumb.GetComponent<ShadowTracker>().ExitAZone();
         ResetInteraction();
     }
 }
