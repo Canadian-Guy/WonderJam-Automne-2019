@@ -24,6 +24,9 @@ public class Lockable : MonoBehaviour
         CheckLockState();
     }
 
+
+
+
     public void AddCurrent(int current = 1)
     {
         this.current += current;
@@ -41,14 +44,15 @@ public class Lockable : MonoBehaviour
         
     }
 
-    private void Lock()
+    protected virtual void Lock()
     {
         animator.Play("");
         spriteRenderer.color = new Vector4(1, 0, 0, 1);
         locked = true;
     }
 
-    private void Unlock()
+    protected virtual void Unlock()
+
     {
         animator.Play("");
         spriteRenderer.color = new Vector4(0, 1, 0, 1);

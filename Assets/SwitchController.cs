@@ -1,10 +1,18 @@
-﻿using UnityEngine.Events;
+
+﻿using System.Collections.Generic;
+using UnityEngine.Events;
+
 using UnityEngine;
 
 public class SwitchController : MonoBehaviour
 {
+
+    public List<Lockable> lockables;
+
     public Animator animator;
-    public UnityEvent onToggle;
+
+    public int power = 1;
+
 
     private bool toggled = false;
 
@@ -16,7 +24,11 @@ public class SwitchController : MonoBehaviour
     public void Toggle()
     {
         toggled = !toggled;
-        onToggle.Invoke();
+
+        
+        foreach(Lockable l in lockables)
+            l.AddCurrent((l.locked) ? power : -power);
+
     }
 
 
