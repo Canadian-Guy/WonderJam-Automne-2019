@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!70 &6072204821287897305
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2901321011494517178}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.000000014901161, y: -0.000000007450581}
-  m_Size: {x: 0.47, y: 0.23}
-  m_Direction: 0
 --- !u!1 &9019857912576223740
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,8 +12,7 @@ GameObject:
   - component: {fileID: 9019857912576223736}
   - component: {fileID: 9019857912576223739}
   - component: {fileID: 9019857912576223734}
-  - component: {fileID: 9019857912576223738}
-  - component: {fileID: 9019857912576223741}
+  - component: {fileID: 7592928100650320700}
   m_Layer: 10
   m_Name: Cloud
   m_TagString: Untagged
@@ -90,7 +73,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5abceecd5c58d694fb7930ffe21c1d81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,8 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 243388645
   m_SortingLayer: 5
   m_SortingOrder: 5
-  m_Sprite: {fileID: -166996505716262605, guid: 2f3ef6cb922dddd4a8ad97a9f0edcc2d,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64ddfd42c6ba88a49a31bf035dcc46c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,56 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TravelSpeed: 5
   m_TravelRight: 1
---- !u!60 &9019857912576223738
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019857912576223740}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 3.75}
-    newSize: {x: 10, y: 3.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 4.875, y: -0.875}
-      - {x: 5, y: -0.5625}
-      - {x: 5, y: -0.0625}
-      - {x: 4.6875, y: 0.125}
-      - {x: 3.0625, y: 0.125}
-      - {x: 2.5, y: 0.4375}
-      - {x: 2.125, y: 0.625}
-      - {x: 1, y: 0.625}
-      - {x: 0.25, y: 0.5}
-      - {x: -0.0625, y: 0.875}
-      - {x: -0.5625, y: 1.4375}
-      - {x: -1.0625, y: 1.5}
-      - {x: -2.75, y: 1.5}
-      - {x: -3.5, y: 0.6875}
-      - {x: -4.5, y: 0.0625}
-      - {x: -4.9375, y: -0.6875}
-      - {x: -4.9375, y: -1.3125}
-      - {x: -4.6875, y: -1.625}
-      - {x: -3, y: -1.75}
-      - {x: 0.3125, y: -1.75}
-      - {x: 1.125, y: -1.625}
-      - {x: 4.5625, y: -1.6875}
-      - {x: 4.875, y: -1.125}
---- !u!66 &9019857912576223741
-CompositeCollider2D:
+--- !u!61 &7592928100650320700
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -198,86 +132,19 @@ CompositeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
+  m_Offset: {x: 0, y: -0.13}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.46875, y: 6.78125}
+    newSize: {x: 10, y: 3.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11.28, y: 3.93}
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 9019857912576223738}
-    m_ColliderPaths:
-    - - X: 3125003
-        Y: -17500000
-      - X: 11250004
-        Y: -16250000
-      - X: 45625008
-        Y: -16874985
-      - X: 48750000
-        Y: -11249994
-      - X: 48750003
-        Y: -8749993
-      - X: 50000000
-        Y: -5624995
-      - X: 49999987
-        Y: -624992
-      - X: 46874993
-        Y: 1250000
-      - X: 30624993
-        Y: 1250004
-      - X: 25000005
-        Y: 4374997
-      - X: 21249994
-        Y: 6250000
-      - X: 9999998
-        Y: 6250000
-      - X: 2499989
-        Y: 5000013
-      - X: -625007
-        Y: 8750008
-      - X: -5625010
-        Y: 14375000
-      - X: -10624994
-        Y: 15000000
-      - X: -27500009
-        Y: 14999992
-      - X: -35000007
-        Y: 6874995
-      - X: -45000004
-        Y: 624994
-      - X: -49375000
-        Y: -6875005
-      - X: -49374994
-        Y: -13125008
-      - X: -46874990
-        Y: -16250000
-      - X: -29999999
-        Y: -17500000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 0.3125006, y: -1.75}
-      - {x: 1.1250008, y: -1.625}
-      - {x: 4.5625014, y: -1.687497}
-      - {x: 4.875, y: -1.1249988}
-      - {x: 4.875001, y: -0.8749986}
-      - {x: 5, y: -0.562499}
-      - {x: 4.9999976, y: -0.0624984}
-      - {x: 4.6874986, y: 0.125}
-      - {x: 3.0624986, y: 0.1250008}
-      - {x: 2.500001, y: 0.4374994}
-      - {x: 2.1249988, y: 0.625}
-      - {x: 0.9999996, y: 0.625}
-      - {x: 0.24999781, y: 0.5000026}
-      - {x: -0.0625014, y: 0.8750016}
-      - {x: -0.562502, y: 1.4375}
-      - {x: -1.0624992, y: 1.5}
-      - {x: -2.750002, y: 1.4999985}
-      - {x: -3.5000017, y: 0.687499}
-      - {x: -4.500001, y: 0.0624988}
-      - {x: -4.9375, y: -0.687501}
-      - {x: -4.937499, y: -1.3125017}
-      - {x: -4.687498, y: -1.625}
-      - {x: -2.9999998, y: -1.75}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1001 &324952420541559094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -380,15 +247,43 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 32.17792
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88, type: 3}
+    - target: {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.49343795
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0017189682
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 671006603
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_BoxCollider2D
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a186d4eb63a710946b1671681ab21f88, type: 3}
---- !u!1 &2901321011494517178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3225112347455096972, guid: a186d4eb63a710946b1671681ab21f88,
-    type: 3}
-  m_PrefabInstance: {fileID: 324952420541559094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2901321011494517177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,

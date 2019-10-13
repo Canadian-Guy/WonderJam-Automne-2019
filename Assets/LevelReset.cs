@@ -1,23 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using Rewired;
 
 public class LevelReset : MonoBehaviour
 {
-    [Tooltip("Player that has the ability to reset de level")]
-    public Player m_ResetPoweredPlayer;
-
     [Tooltip("Event to raise when we need a reset")]
     public GameEvent m_ResetEvent;
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 1f && m_ResetPoweredPlayer.m_rewiredPlayer.GetButtonDown("Reset"))
-        {
-            Reset();
-        }
+        if(Time.timeScale == 0f) return;
+
+        foreach(Rewired.Player player in ReInput.players.Players)
+            if(player.GetButtonDown("Reset")) Reset();
     }
 
     public void Reset()
