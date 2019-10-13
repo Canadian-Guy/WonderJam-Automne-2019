@@ -6,7 +6,8 @@ public class Door : Lockable
 {
     public Key key;
     public GameObject objLock;
-    public GameObject frame;
+    public GameObject frame1;
+    public GameObject frame2;
 
     public new void Start()
     {
@@ -14,6 +15,8 @@ public class Door : Lockable
 
         if (key)
             objLock.GetComponent<SpriteRenderer>().color = key.color;
+        else if (!key)
+            objLock.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void OnCollisionEnter2D(Collision2D collider)
@@ -35,20 +38,24 @@ public class Door : Lockable
 
     protected override void Lock()
     {
-        objLock.GetComponent<SpriteRenderer>().enabled = true;
+        if (key)
+            objLock.GetComponent<SpriteRenderer>().enabled = true;
+
         GetComponent<Collider2D>().enabled = true;
-        frame.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
-        gameObject.layer = 9;
+        frame1.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
+        frame2.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
 
         locked = true;
     }
 
     protected override void Unlock()
     {
-        objLock.GetComponent<SpriteRenderer>().enabled = false;
+        if (key)
+            objLock.GetComponent<SpriteRenderer>().enabled = false;
+
         GetComponent<Collider2D>().enabled = false;
-        frame.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
-        gameObject.layer = 0;
+        frame1.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
+        frame2.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
 
         locked = false;
     }

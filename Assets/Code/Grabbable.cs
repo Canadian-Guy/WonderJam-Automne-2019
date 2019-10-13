@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Grabbable : Interactable
 {
+    public int weight = 1;
+
     protected override void Interact(Player player)
     {
         Grabber grabber = player.GetComponent<Grabber>();

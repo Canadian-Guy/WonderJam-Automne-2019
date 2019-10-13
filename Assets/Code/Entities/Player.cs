@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [Tooltip("The id assigned to this player, corresponds to the Rewired player id (starts at 0)")]
     public int m_playerId = 0;
 
+    public int weight = 1;
+
     [HideInInspector] public CharController m_playerController;
     [HideInInspector] public Rewired.Player m_rewiredPlayer;
     [HideInInspector] public bool m_switched = false;
