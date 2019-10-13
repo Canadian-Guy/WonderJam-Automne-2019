@@ -34,6 +34,8 @@ public class PressureController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        animator.SetBool("istriggered", true);
+
         if (collision.gameObject.tag == "Object")
         {
             currentPressure += collision.GetComponentInChildren<Grabbable>().weight;
@@ -56,6 +58,8 @@ public class PressureController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        animator.SetBool("istriggered", false);
+
         if (collision.gameObject.tag == "Object")
         {
             currentPressure -= collision.GetComponentInChildren<Grabbable>().weight;
