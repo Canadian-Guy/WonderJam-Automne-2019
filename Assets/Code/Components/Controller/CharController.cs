@@ -49,12 +49,14 @@ public class CharController : MonoBehaviour
     }
 
     void Update() {
-        if(m_source == null) m_source = GetComponent<AudioSource>();
+        if(m_source == null)
+            foreach(AudioSource source in GetComponents<AudioSource>())
+                if(!source.loop) m_source = source;
 
         m_animator.SetBool("isgrabbing", m_player.GetComponent<Grabber>().Grabbing);
        
-        Vector2 groundedSize = new Vector2(0.34f, 0.1f);
-        Vector2 groundedStart = new Vector2(transform.position.x - 0.005f, transform.position.y - 0.5f);
+        Vector2 groundedSize = new Vector2(0.34f, 0.05f);
+        Vector2 groundedStart = new Vector2(transform.position.x - 0.005f, transform.position.y - 0.475f);
         int groundingSections = 10;
         int hitSections = 0;
 
