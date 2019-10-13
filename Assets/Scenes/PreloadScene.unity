@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerList: []
   m_playingPlayers: 0
+  m_previousPlayerInteractions: 
   m_canSwitch: 1
 --- !u!82 &261451653
 AudioSource:
@@ -460,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efa70eea88e69459c632aac286892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewiredInputManager: {fileID: 0}
+  rewiredInputManager: {fileID: 2892722826513769607}
   useAllRewiredGamePlayers: 1
   useRewiredSystemPlayer: 1
   rewiredPlayerIds: 00000000
@@ -473,7 +474,7 @@ MonoBehaviour:
   submitActionId: -1
   cancelActionId: -1
   m_HorizontalAxis: UIHorizontal
-  m_VerticalAxis: UIVertical
+  m_VerticalAxis: MoveY
   m_SubmitButton: UISubmit
   m_CancelButton: UICancel
   m_InputActionsPerSecond: 4.5
@@ -596,5 +597,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b76d60c0befc3494fb44244428422745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2892722826513769607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2871518184091537472, guid: 25b046e3451f1c14c938a9477f764033,
+    type: 3}
+  m_PrefabInstance: {fileID: 2892722826513769604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892722826513769605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
