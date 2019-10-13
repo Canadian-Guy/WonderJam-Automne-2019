@@ -7,12 +7,17 @@ public class Door : Lockable
     public Key key;
     public GameObject objLock;
     public GameObject frame1;
+    public SpriteRenderer frame1renderer;
     public GameObject frame2;
+    public SpriteRenderer frame2renderer;
     public GameObject triggerZone;
 
     public new void Start()
     {
         base.Start();
+
+        frame1renderer = frame1.GetComponent<SpriteRenderer>();
+        frame2renderer = frame2.GetComponent<SpriteRenderer>();
 
         if (key)
             objLock.GetComponent<SpriteRenderer>().color = key.color;
@@ -44,8 +49,8 @@ public class Door : Lockable
 
         GetComponent<Collider2D>().enabled = true;
         triggerZone.GetComponent<BoxCollider2D>().enabled = true;
-        frame1.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
-        frame2.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
+        frame1renderer.color = new Vector4(frame1renderer.color.r, frame1renderer.color.g, frame1renderer.color.b, 1);
+        frame2renderer.color = new Vector4(frame2renderer.color.r, frame2renderer.color.g, frame2renderer.color.b, 1);
         locked = true;
     }
 
@@ -56,8 +61,8 @@ public class Door : Lockable
 
         GetComponent<Collider2D>().enabled = false;
         triggerZone.GetComponent<BoxCollider2D>().enabled = false;
-        frame1.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
-        frame2.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
+        frame1renderer.color = new Vector4(frame1renderer.color.r, frame1renderer.color.g, frame1renderer.color.b, 0.1f);
+        frame2renderer.color = new Vector4(frame2renderer.color.r, frame2renderer.color.g, frame2renderer.color.b, 0.1f);
         locked = false;
     }
 }
