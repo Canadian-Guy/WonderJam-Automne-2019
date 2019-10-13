@@ -60,14 +60,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9019857912576223740}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -300,6 +300,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_BoxCollider2D
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 671006603
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -364,21 +379,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 32.17792
-      objectReference: {fileID: 0}
-    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 671006603
-      objectReference: {fileID: 0}
-    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_BoxCollider2D
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88, type: 3}
