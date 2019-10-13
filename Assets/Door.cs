@@ -38,6 +38,7 @@ public class Door : Lockable
         objLock.GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
         frame.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, 2);
+        gameObject.layer = 9;
 
         locked = true;
     }
@@ -47,6 +48,7 @@ public class Door : Lockable
         objLock.GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         frame.GetComponent<SpriteRenderer>().color *= new Vector4(1, 1, 1, .5f);
+        gameObject.layer = 0;
 
         locked = false;
     }
