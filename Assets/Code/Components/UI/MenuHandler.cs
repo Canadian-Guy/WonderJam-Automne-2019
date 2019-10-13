@@ -13,8 +13,14 @@ public class MenuHandler : MonoBehaviour
         foreach(Rewired.Player player in ReInput.players.Players) {
             bool interact = player.GetButtonDown("Interact");
             bool reset = player.GetButtonDown("Reset");
+            bool jump = player.GetButtonDown("Jump");
             bool pause = player.GetButtonDown("Pause");
             bool pauseScreenOpened = m_pauseScreen && m_pauseScreen.activeSelf;
+
+            if(jump && mainMenu) {
+                SceneManager.LoadScene("Leaderboard");
+                return;
+            }
 
             if(!mainMenu && !pauseScreenOpened) {
                 if(pause) Pause();
@@ -38,6 +44,9 @@ public class MenuHandler : MonoBehaviour
     }
 
     private void StartGame() {
+        Game.m_scores.m_scores.Clear();
+        Game.m_scores.ResetLevelVariables();
+
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 

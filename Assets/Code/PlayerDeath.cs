@@ -58,6 +58,8 @@ public class PlayerDeath : MonoBehaviour
 
     public void Death()
     {
+        Game.m_scores.m_deaths++;
+
         if(m_deathSound != null) m_deathSound.Play(m_source);
 
         transform.position = m_spawnPosition.position;

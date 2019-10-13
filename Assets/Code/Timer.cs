@@ -6,25 +6,21 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public float time = 0.00f;
+    private float m_startTime;
 
-    float time = 0.00f;
-    // Start is called before the first frame update
     void Start()
     {
+        m_startTime = Time.time;
         StartCoroutine(SetTimer());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator SetTimer()
     {
         gameObject.GetComponent<TMP_Text>().text = time.ToString("F2") + " s";
-        time+=0.01f;
-        yield return new WaitForSeconds(0.01f);
+        time = Time.time - m_startTime;
+        Game.m_scores.m_time = time;
+        yield return new WaitForSeconds(0.05f);
         StartCoroutine(SetTimer());
     }
 }
