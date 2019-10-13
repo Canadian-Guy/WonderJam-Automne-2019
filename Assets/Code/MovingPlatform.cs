@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : Lockable
 {
     [Tooltip("Empty GameObject which represents the stopping point of the platform")]
     public GameObject m_endPoint;
@@ -16,29 +16,26 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 m_startingPosition;
     private bool m_destinationReached = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_startingPosition = gameObject.transform.position;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!m_destinationReached)
+        Debug.Log(locked);
+        if (!locked)
         {
-            gameObject.transform.Translate((m_horizontalSliding ? Vector3.right : Vector3.up) * m_slidingSpeed * Time.deltaTime * (!m_reverseDirection ? 1 : -1));
-        }
-        else
-        {
-            Debug.Log("aaaaaaagfssg");
-            gameObject.transform.Translate((m_horizontalSliding ? Vector3.right : Vector3.up) * m_slidingSpeed * Time.deltaTime * (m_reverseDirection ? 1 : -1));
+            if (!m_destinationReached)
+            {
+                gameObject.transform.Translate((m_horizontalSliding ? Vector3.right : Vector3.up) * m_slidingSpeed * Time.deltaTime * (!m_reverseDirection ? 1 : -1));
+            }
+            else
+            {
+                gameObject.transform.Translate((m_horizontalSliding ? Vector3.right : Vector3.up) * m_slidingSpeed * Time.deltaTime * (m_reverseDirection ? 1 : -1));
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Tag:" + m_destinationReached);
         if (collision.tag == "PlatformEnd")
             m_destinationReached = true;
         else if (collision.tag == "PlatformStart")
