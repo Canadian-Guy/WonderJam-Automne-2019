@@ -34,7 +34,8 @@ public class Grabber : MonoBehaviour
     {
         if (!Grabbing)
         {
-            Grabbable = grabbable; 
+            Grabbable = grabbable;
+            ChangeLayersRecursively(grabbable.gameObject, 9);
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(inHandAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y), 
                 0, getCombineLayerMask(invalidGrabLayers));
@@ -89,4 +90,15 @@ public class Grabber : MonoBehaviour
 
         return result;
     }
+
+    public static void ChangeLayersRecursively(GameObject go, int layer)
+    {
+        Debug.Log("Hum...");
+        go.layer = layer;
+        foreach (Transform child in go.transform)
+        {
+            ChangeLayersRecursively(child.gameObject, layer);
+        }
+    }
 }
+
