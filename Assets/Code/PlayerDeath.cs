@@ -70,6 +70,16 @@ public class PlayerDeath : MonoBehaviour
         //Instantiate(m_player, m_spawnPosition.position, Quaternion.identity);
     }
 
+    public void Reset()
+    {
+        Game.m_scores.m_deaths++;
+        gameObject.GetComponent<Grabber>().Grabbable.Release();
+        gameObject.GetComponent<Grabber>().Grabbing = false;
+        gameObject.GetComponent<Grabber>().Grabbable = null;
+        gameObject.transform.position = m_spawnPosition.position;
+        m_expositionRate = 0d;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "KillZone")

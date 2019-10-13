@@ -83,7 +83,6 @@ public class Grabber : MonoBehaviour
             Grabbable.transform.parent.parent = dropAnchor.transform;
             Grabbable.transform.parent.localPosition = new Vector2(-dropAnchor.transform.position.x, dropAnchor.transform.position.y);
             Grabbable.transform.parent.parent = null;
-
             Grabbing = false;
             Grabbable.Release();
         }
