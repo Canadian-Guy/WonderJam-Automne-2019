@@ -18,8 +18,13 @@ public class BackgroundMusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartTheShit();
+    }
+    
+    public void StartTheShit()
+    {
         m_AmbiantNoises.Play(m_AmbiantSource);
         m_BackgroundMusic.Play(m_BackgroundMusicSource);
     }
-    
+
 }
