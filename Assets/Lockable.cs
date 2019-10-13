@@ -46,16 +46,20 @@ public class Lockable : MonoBehaviour
 
     protected virtual void Lock()
     {
-        animator.Play("");
-        spriteRenderer.color = new Vector4(1, 0, 0, 1);
+        if(animator != null)
+            animator.Play("");
+        if (spriteRenderer != null)
+            spriteRenderer.color = new Vector4(1, 0, 0, 1);
         locked = true;
     }
 
     protected virtual void Unlock()
 
     {
-        animator.Play("");
-        spriteRenderer.color = new Vector4(0, 1, 0, 1);
+        if (animator != null)
+            animator.Play("");
+        if(spriteRenderer != null)
+            spriteRenderer.color = new Vector4(0, 1, 0, 1);
         locked = false;
     }
 }
