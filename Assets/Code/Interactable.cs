@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
     }
 
 
-    protected virtual void Interact(Player player)
+    public virtual void Interact(Player player)
     {
         StopInteraction();
 
@@ -91,7 +91,7 @@ public class Interactable : MonoBehaviour
         interactTooltip.enabled = false;
     }
 
-    protected void ResetInteraction()
+    public void ResetInteraction()
     {
         canBeInteracted = true;
         interactTooltip.enabled = interactors.Count > 0;
