@@ -39,7 +39,7 @@ public class CharController : MonoBehaviour
     protected Vector3 m_velocity;
 
     private float m_lastJumpTime = 0f;
-    private bool m_isGrounded = true;
+    public bool m_isGrounded = true;
     private AudioSource m_source = null;
 
     void Awake() {
