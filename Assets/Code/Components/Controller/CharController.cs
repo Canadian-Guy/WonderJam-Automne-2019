@@ -49,7 +49,9 @@ public class CharController : MonoBehaviour
     }
 
     void Update() {
-        if(m_source == null) m_source = GetComponent<AudioSource>();
+        if(m_source == null)
+            foreach(AudioSource source in GetComponents<AudioSource>())
+                if(!source.loop) m_source = source;
 
         m_animator.SetBool("isgrabbing", m_player.GetComponent<Grabber>().Grabbing);
        

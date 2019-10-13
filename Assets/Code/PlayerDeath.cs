@@ -33,7 +33,9 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_source == null) m_source = GetComponent<AudioSource>();
+        if(m_source == null)
+            foreach(AudioSource source in GetComponents<AudioSource>())
+                if(!source.loop) m_source = source;
 
         if (m_isPraisingTheSun)
         {
