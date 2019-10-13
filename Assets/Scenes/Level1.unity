@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3112,7 +3112,7 @@ PrefabInstance:
       objectReference: {fileID: 2104282012}
     - target: {fileID: 2450397606918429114, guid: 32ccfad4a9f29e7408151b314206e9c5,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: m_Controller
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
@@ -3586,7 +3586,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932787666}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1932787668
 Camera:
   m_ObjectHideFlags: 0
