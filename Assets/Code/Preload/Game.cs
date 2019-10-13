@@ -3,11 +3,15 @@
 static class Game {
 
     public static AudioManager m_audio;
+    public static PlayerManager m_players;
+    public static ScoreManager m_scores;
 
     static Game() {
 		GameObject game = SafeFind("_app");
 
         m_audio = (AudioManager) SafeComponent(game, "AudioManager");
+        m_players = (PlayerManager) SafeComponent(game, "PlayerManager");
+        m_scores = (ScoreManager) SafeComponent(game, "ScoreManager");
     }
 
 	private static GameObject SafeFind(string p_name) {
