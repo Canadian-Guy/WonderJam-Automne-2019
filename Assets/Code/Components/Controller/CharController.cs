@@ -21,7 +21,7 @@ public class CharController : MonoBehaviour
     [Range(0, 1f)] public float m_maxJumpHoldTime = 0.3f;
 
     [Tooltip("The speed at which the character falls")]
-    [Range(-250f, 0f)] public float m_fallVelocity = -50f;
+    [Range(-250f, 0f)] public float m_fallVelocity = -100f;
 
     [Tooltip("The cooldown until the character can jump again")]
     [Range(0, 2f)] public float m_jumpCooldown = 0.5f;
