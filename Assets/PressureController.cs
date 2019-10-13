@@ -36,13 +36,22 @@ public class PressureController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Object")
         {
-            Debug.Log("Yiipie");
             currentPressure += collision.GetComponentInChildren<Grabbable>().weight;
             if (currentPressure >= neededPressure)
             {
                 Toggle();
             }
         }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            currentPressure += collision.GetComponent<Player>().weight;
+            if (currentPressure >= neededPressure)
+            {
+                Toggle();
+            }
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -50,6 +59,12 @@ public class PressureController : MonoBehaviour
         if (collision.gameObject.tag == "Object")
         {
             currentPressure -= collision.GetComponentInChildren<Grabbable>().weight;
+            Toggle();
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            currentPressure -= collision.GetComponent<Player>().weight;
             Toggle();
         }
     }
