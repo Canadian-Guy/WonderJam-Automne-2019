@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - KillZone
+  - PlatformEnd
+  - PlatformStart
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - 
   - Player
   - Ground
-  - 
-  - 
-  - 
+  - Cloud
+  - Shadow
+  - Platform
   - 
   - 
   - 

@@ -38,13 +38,15 @@ public class Interactable : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Wololol");
         if (other.tag == "Player")
         {
-            interactors.Add(other.gameObject.GetComponent<Player>());
+            if (!other.gameObject.GetComponent<Grabber>().Grabbing)
+            {
+                interactors.Add(other.gameObject.GetComponent<Player>());
 
-            if (interactTooltip && canBeInteracted && !interactTooltip.enabled)
-                interactTooltip.enabled = true;
+                if (interactTooltip && canBeInteracted && !interactTooltip.enabled)
+                    interactTooltip.enabled = true;
+            }
         }
     }
 
@@ -87,20 +89,18 @@ public class Interactable : MonoBehaviour
     {
         canBeInteracted = false;
         interactTooltip.enabled = false;
-        interactors.Clear();
     }
 
     protected void ResetInteraction()
     {
         canBeInteracted = true;
+        interactTooltip.enabled = interactors.Count > 0;
     }
 
     private IEnumerator ApplyInteractionCooldown()
     {
         if (multipleInteraction)
             yield return new WaitForSeconds(interactionCooldown);
-        else
-            yield return null;
 
         ResetInteraction();
     }
