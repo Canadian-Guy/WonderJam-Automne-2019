@@ -382,7 +382,7 @@ MonoBehaviour:
   m_playerSpriteRenderer: {fileID: 0}
   m_playerDeath: {fileID: 0}
   m_smokeSystem: {fileID: 2709768784649788660}
-  m_burnSound: {fileID: 11400000, guid: 34c6d3ef70e89704ba616034db829aef, type: 2}
+  m_burnSound: {fileID: 11400000, guid: f8a37c599ef2291489a07a383abb3718, type: 2}
 --- !u!114 &5264578074909389326
 MonoBehaviour:
   m_ObjectHideFlags: 0
