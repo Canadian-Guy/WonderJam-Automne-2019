@@ -29,7 +29,7 @@ public class SwitchController : MonoBehaviour
         foreach(Lockable l in lockables)
             l.AddCurrent((l.locked) ? power : -power);
 
-        animator.SetBool("isactivated", true);
+       animator.SetBool("isactivated", toggled);
 
     }
 
