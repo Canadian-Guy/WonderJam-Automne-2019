@@ -29,6 +29,9 @@ public class CharController : MonoBehaviour
     [Tooltip("The audio clip played when jumping")]
     public SimpleAudioEvent m_jumpSound;
 
+    [Tooltip("The Animator for the character. Change the animator controller to change how animation states work")]
+    public Animator m_animator;
+
     [HideInInspector] public Player m_player;
     [HideInInspector] public bool m_directionX; // Whether or not the character is facing right
 
@@ -48,6 +51,8 @@ public class CharController : MonoBehaviour
     void Update() {
         if(m_source == null) m_source = GetComponent<AudioSource>();
 
+        m_animator.SetBool("isgrabbing", m_player.GetComponent<Grabber>().isGrabbing());
+       
         Vector2 groundedSize = new Vector2(0.34f, 0.1f);
         Vector2 groundedStart = new Vector2(transform.position.x - 0.005f, transform.position.y - 0.5f);
         int groundingSections = 10;
@@ -72,27 +77,33 @@ public class CharController : MonoBehaviour
 
         m_isGrounded = hitSections >= 3;
 
-        if(!m_isGrounded) ApplyGravity();
+        if (!m_isGrounded) ApplyGravity();
+        else if (m_isGrounded) m_animator.SetBool("isjumping", false);
 
-        if(!m_player.m_hasEnteredGame && !m_player.m_puppet) {
+        if (!m_player.m_hasEnteredGame && !m_player.m_puppet) {
             m_rigidbody2D.velocity = new Vector2(0, m_rigidbody2D.velocity.y);
-            m_player.m_animator.SetBool("isWalking", false);
+            m_animator.SetFloat("speed", 0f);
             return;
         }
 
         if(m_player.m_puppet &&
             Game.m_players.GetPlayerFromId(m_player.m_playerId == 0 ? 1 : 0).m_lastUsed !=
             m_player.m_rewiredPlayer.controllers.GetLastActiveController()) {
-            m_player.m_animator.SetBool("isWalking", false);
+            m_animator.SetFloat("speed", 0f);
             return;
         }
 
         float xMove = m_player.m_rewiredPlayer.GetAxisRaw("MoveX");
+        m_animator.SetFloat("speed", Mathf.Abs(xMove));
+
         float yMove = 0f;
         bool jump = m_player.m_rewiredPlayer.GetButton("Jump");
         bool withinHoldLimit = Time.time - m_lastJumpTime <= m_maxJumpHoldTime;
 
         if(jump) {
+
+            m_animator.SetBool("isjumping", true);
+
             if(Time.time - m_lastJumpTime >= m_jumpCooldown && !withinHoldLimit && m_isGrounded) {
                 if(m_jumpSound != null) m_jumpSound.Play(m_source);
 
@@ -102,14 +113,11 @@ public class CharController : MonoBehaviour
                 yMove = m_jumpHeight * 2f * (1f - (Time.time - m_lastJumpTime) / m_maxJumpHoldTime);
         }
 
-        if(float.IsNaN(xMove)) xMove = 0;
+        if (float.IsNaN(xMove)) xMove = 0;
         if(float.IsNaN(yMove)) yMove = 0;
 
         xMove *= Time.deltaTime;
         yMove *= Time.deltaTime;
-
-        if(Mathf.Abs(xMove) > 0.05) m_player.m_animator.SetBool("isWalking", true);
-        else m_player.m_animator.SetBool("isWalking", false);
 
         Vector3 targetVelocity = new Vector2(xMove * (m_speed / Time.unscaledDeltaTime) + m_rigidbody2D.velocity.x / 2, 
                                              yMove * (m_jumpSpeed / Time.unscaledDeltaTime));

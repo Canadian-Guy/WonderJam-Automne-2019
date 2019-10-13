@@ -12,11 +12,19 @@ public class Lockable : MonoBehaviour
 
     private int current = 0;
 
+    public void Awake()
+    {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     public void Start()
     {
         locked = current < neededCurent;
         CheckLockState();
     }
+
+
 
 
     public void AddCurrent(int current = 1)
@@ -44,6 +52,7 @@ public class Lockable : MonoBehaviour
     }
 
     protected virtual void Unlock()
+
     {
         animator.Play("");
         spriteRenderer.color = new Vector4(0, 1, 0, 1);
