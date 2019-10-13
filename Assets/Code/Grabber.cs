@@ -93,6 +93,7 @@ public class Grabber : MonoBehaviour
 
     public static void ChangeLayersRecursively(GameObject go, int layer)
     {
+        Debug.Log("Hum...");
         go.layer = layer;
         foreach (Transform child in go.transform)
         {
