@@ -37,7 +37,7 @@ public class LeaderboardSpot : MonoBehaviour
                 float yAxis = player.GetAxisRaw("MoveY");
                 bool accepting = player.GetButtonDown("Jump");
 
-                if(Mathf.Abs(yAxis) > 0 && Time.time - m_lastScrollDown >= 0.1f) {
+                if(Mathf.Abs(yAxis) > 0 && Time.time - m_lastScrollDown >= 0.2f) {
                     m_lastScrollDown = Time.time;
 
                     if(yAxis > 0) m_currentLetter--;
