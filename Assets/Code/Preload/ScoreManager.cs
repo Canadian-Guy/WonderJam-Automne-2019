@@ -33,11 +33,11 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public float GetAdjustedTime(LevelScore p_score) {
-        return p_score.m_time + p_score.m_deaths * 5f;
+        return p_score.m_time + p_score.m_deaths * 15f;
     }
 
     public float GetTotalAdjustedTime() {
-        return GetTotalBaseTime() + GetTotalDeaths() * 5f;
+        return GetTotalBaseTime() + GetTotalDeaths() * 15f;
     }
 
     private void OnSceneLoad(Scene p_scene, LoadSceneMode p_mode) {
