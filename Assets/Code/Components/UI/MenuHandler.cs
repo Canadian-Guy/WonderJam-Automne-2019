@@ -28,12 +28,10 @@ public class MenuHandler : MonoBehaviour
 
             if(interact && mainMenu) {
                 for(int i = 0; i < 2; i++) {
-                    DoubleBool interactions = new DoubleBool();
+                    Game.m_players.m_previousPlayerInteractions.Add(player.id == i);
 
-                    interactions.First = player.id == i;
-                    interactions.Second = false;
-
-                    Game.m_players.m_previousPlayerInteractions.Add(interactions);
+                    if(Game.m_players.m_playerList.Count > i)
+                        Game.m_players.GetPlayerFromId(i).ResetController();
                 }
 
                 StartGame();
