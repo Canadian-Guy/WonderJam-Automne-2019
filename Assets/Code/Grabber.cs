@@ -65,9 +65,8 @@ public class Grabber : MonoBehaviour
             bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),
                 0, getCombineLayerMask(invalidDropLayers));
 
-            if (!overlap)
+            if (!overlap && player.GetComponent<CharController>().m_isGrounded)
             {
-                Debug.Log("No overlap");
 
                 Grabbable.transform.parent.parent = dropAnchor.transform;
                 Grabbable.transform.parent.localPosition = Vector2.zero;
@@ -76,10 +75,6 @@ public class Grabber : MonoBehaviour
                 Grabbing = false;
                 Grabbable.Release();
             }
-
-            Debug.Log("Theres an overlap");
-
-            // Actualy drop the shnit
             
         }
     }
