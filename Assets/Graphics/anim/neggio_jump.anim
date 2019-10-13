@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: neggio_pick
+  m_Name: neggio_jump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,8 +20,6 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 664935676dfd7df428a866ce5fa1f498, type: 3}
-    - time: 0.05
       value: {fileID: 21300000, guid: 9c9e67cc6c34ea24d8085fa0830c090c, type: 3}
     attribute: m_Sprite
     path: 
@@ -42,14 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 664935676dfd7df428a866ce5fa1f498, type: 3}
     - {fileID: 21300000, guid: 9c9e67cc6c34ea24d8085fa0830c090c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.06666667
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
