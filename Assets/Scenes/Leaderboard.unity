@@ -539,7 +539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.8, y: 0}
+  m_AnchoredPosition: {x: -62.864998, y: 0}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598025227
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderboard
+  m_text: Classements
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2fcaefa068eb644abe568aef0bb195, type: 2}
   m_sharedMaterial: {fileID: 21910937811806750, guid: 3a2fcaefa068eb644abe568aef0bb195,
@@ -924,8 +924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 16.99, y: 0}
+  m_SizeDelta: {x: -34, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141162653
 MonoBehaviour:
@@ -945,9 +945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Menu
-
-'
+  m_text: Menu Principal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2fcaefa068eb644abe568aef0bb195, type: 2}
   m_sharedMaterial: {fileID: 21910937811806750, guid: 3a2fcaefa068eb644abe568aef0bb195,
@@ -976,13 +974,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1017,9 +1015,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1141162653}
-    characterCount: 10
+    characterCount: 14
     spriteCount: 0
-    spaceCount: 2
+    spaceCount: 1
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -1207,8 +1205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -193, y: 180}
-  m_SizeDelta: {x: 145.99, y: 30}
+  m_AnchoredPosition: {x: -210.99, y: 180.99998}
+  m_SizeDelta: {x: 161.81, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644043526
 MonoBehaviour:
@@ -1747,9 +1745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name
-
-'
+  m_text: Nom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2fcaefa068eb644abe568aef0bb195, type: 2}
   m_sharedMaterial: {fileID: 21910937811806750, guid: 3a2fcaefa068eb644abe568aef0bb195,
@@ -1819,9 +1815,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2101301548}
-    characterCount: 5
+    characterCount: 3
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 0
     wordCount: 1
     linkCount: 0
     lineCount: 1
