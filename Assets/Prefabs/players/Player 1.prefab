@@ -292,7 +292,7 @@ MonoBehaviour:
     m_Bits: 512
   m_smoothTime: 0.05
   m_speed: 3
-  m_jumpHeight: 6
+  m_jumpHeight: 5.65
   m_jumpSpeed: 2
   m_maxJumpHoldTime: 0.3
   m_fallVelocity: -100
