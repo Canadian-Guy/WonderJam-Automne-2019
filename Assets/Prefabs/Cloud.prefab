@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 9019857912576223734}
   - component: {fileID: 9019857912576223738}
   - component: {fileID: 9019857912576223741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,8 +108,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 243388645
+  m_SortingLayer: 5
   m_SortingOrder: 5
   m_Sprite: {fileID: -166996505716262605, guid: 2f3ef6cb922dddd4a8ad97a9f0edcc2d,
     type: 3}
@@ -300,11 +300,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
-        type: 3}
-      propertyPath: m_BoxCollider2D
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3225112347455096975, guid: a186d4eb63a710946b1671681ab21f88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,6 +364,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 32.17792
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 671006603
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225112347455096974, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326774410132410814, guid: a186d4eb63a710946b1671681ab21f88,
+        type: 3}
+      propertyPath: m_BoxCollider2D
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3225112347455096973, guid: a186d4eb63a710946b1671681ab21f88, type: 3}
