@@ -25,7 +25,7 @@ public class Grabber : MonoBehaviour
 
     public void Update()
     {
-        if (Grabbing)
+        if (Grabbing && Time.timeScale == 1f && player.m_rewiredPlayer.GetButtonDown("Interact"))
             Drop();
     }
 
@@ -35,7 +35,6 @@ public class Grabber : MonoBehaviour
         if (!Grabbing)
         {
             Grabbable = grabbable;
-            ChangeLayersRecursively(grabbable.gameObject, 9);
             SpriteRenderer renderer = grabbable.GetComponentInParent<SpriteRenderer>();
             bool overlap = Physics2D.OverlapBox(inHandAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y), 
                 0, getCombineLayerMask(invalidGrabLayers));
@@ -60,23 +59,33 @@ public class Grabber : MonoBehaviour
 
     public void Drop()
     {
-        if (Time.timeScale == 1f && player.m_rewiredPlayer.GetButtonDown("Interact"))
+        SpriteRenderer renderer = Grabbable.GetComponentInParent<SpriteRenderer>();
+        bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),
+            0, getCombineLayerMask(invalidDropLayers));
+
+        if (!overlap && player.GetComponent<CharController>().m_isGrounded)
+        {
+
+            Grabbable.transform.parent.parent = dropAnchor.transform;
+            Grabbable.transform.parent.localPosition = Vector2.zero;
+            Grabbable.transform.parent.parent = null;
+
+            Grabbing = false;
+            Grabbable.Release();
+        }
+    }
+
+    public void ForceDrop()
+    {
+        if (Grabbing)
         {
             SpriteRenderer renderer = Grabbable.GetComponentInParent<SpriteRenderer>();
-            bool overlap = Physics2D.OverlapBox(dropAnchor.transform.position, new Vector2(renderer.bounds.size.x, renderer.bounds.size.y),
-                0, getCombineLayerMask(invalidDropLayers));
+            Grabbable.transform.parent.parent = dropAnchor.transform;
+            Grabbable.transform.parent.localPosition = new Vector2(-dropAnchor.transform.position.x, dropAnchor.transform.position.y);
+            Grabbable.transform.parent.parent = null;
 
-            if (!overlap && player.GetComponent<CharController>().m_isGrounded)
-            {
-
-                Grabbable.transform.parent.parent = dropAnchor.transform;
-                Grabbable.transform.parent.localPosition = Vector2.zero;
-                Grabbable.transform.parent.parent = null;
-
-                Grabbing = false;
-                Grabbable.Release();
-            }
-            
+            Grabbing = false;
+            Grabbable.Release();
         }
     }
 
@@ -89,16 +98,6 @@ public class Grabber : MonoBehaviour
             result |= l;
 
         return result;
-    }
-
-    public static void ChangeLayersRecursively(GameObject go, int layer)
-    {
-        Debug.Log("Hum...");
-        go.layer = layer;
-        foreach (Transform child in go.transform)
-        {
-            ChangeLayersRecursively(child.gameObject, layer);
-        }
     }
 }
 

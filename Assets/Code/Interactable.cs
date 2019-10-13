@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
     }
 
 
-    protected virtual void Interact(Player player)
+    public virtual void Interact(Player player)
     {
         StopInteraction();
 
