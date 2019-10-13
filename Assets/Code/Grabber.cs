@@ -81,7 +81,7 @@ public class Grabber : MonoBehaviour
         {
             SpriteRenderer renderer = Grabbable.GetComponentInParent<SpriteRenderer>();
             Grabbable.transform.parent.parent = dropAnchor.transform;
-            Grabbable.transform.parent.localPosition = new Vector2(-dropAnchor.transform.position.x, dropAnchor.transform.position.y);
+            Grabbable.transform.parent.localPosition = new Vector2(-dropAnchor.transform.position.x/2, 0);
             Grabbable.transform.parent.parent = null;
             Grabbing = false;
             Grabbable.Release();
